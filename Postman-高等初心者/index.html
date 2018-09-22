@@ -1,0 +1,770 @@
+    <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="qhhLsBMkFudaIP92k5EA4aC8gTIe8hQn2VCoh_I_FUk" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="postman使用" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="這邊文章是預想入門一陣子   &amp;#8194;&amp;#8194;&amp;#8194;&amp;#8195;&amp;#8195;&amp;#8195;&amp;#8195;–但還是有菜味（稍去土味？） &amp;#8194;&amp;#8194;&amp;#8194;&amp;#8195;&amp;#8195;&amp;#8195;&amp;#8195;–而且時常搞不清楚前輩為什麼這麼懂接口  &amp;#8194;&amp;#8194;&amp;#8194;&amp;#8195;&amp;#8195;&amp;#8195;&amp;#8195;">
+<meta name="keywords" content="postman使用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Postman 高等初心者">
+<meta property="og:url" content="http://EdwardClown.github.io/Postman-高等初心者/index.html">
+<meta property="og:site_name" content="Coding_OR_Dying">
+<meta property="og:description" content="這邊文章是預想入門一陣子   &amp;#8194;&amp;#8194;&amp;#8194;&amp;#8195;&amp;#8195;&amp;#8195;&amp;#8195;–但還是有菜味（稍去土味？） &amp;#8194;&amp;#8194;&amp;#8194;&amp;#8195;&amp;#8195;&amp;#8195;&amp;#8195;–而且時常搞不清楚前輩為什麼這麼懂接口  &amp;#8194;&amp;#8194;&amp;#8194;&amp;#8195;&amp;#8195;&amp;#8195;&amp;#8195;">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:image" content="http://edwardclown.github.io/Postman-高等初心者/1.png">
+<meta property="og:image" content="http://edwardclown.github.io/Postman-高等初心者/2.png">
+<meta property="og:image" content="http://edwardclown.github.io/Postman-高等初心者/3.png">
+<meta property="og:image" content="http://edwardclown.github.io/Postman-高等初心者/4.png">
+<meta property="og:image" content="http://edwardclown.github.io/Postman-高等初心者/5.png">
+<meta property="og:image" content="http://edwardclown.github.io/Postman-高等初心者/6.png">
+<meta property="og:image" content="http://edwardclown.github.io/Postman-高等初心者/7.png">
+<meta property="og:image" content="http://edwardclown.github.io/Postman-高等初心者/8.png">
+<meta property="og:image" content="http://edwardclown.github.io/Postman-高等初心者/9.png">
+<meta property="og:image" content="http://edwardclown.github.io/Postman-高等初心者/10.png">
+<meta property="og:image" content="http://edwardclown.github.io/Postman-高等初心者/11.png">
+<meta property="og:image" content="http://edwardclown.github.io/Postman-高等初心者/12.png">
+<meta property="og:image" content="http://edwardclown.github.io/Postman-高等初心者/13.png">
+<meta property="og:updated_time" content="2017-11-11T10:06:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Postman 高等初心者">
+<meta name="twitter:description" content="這邊文章是預想入門一陣子   &amp;#8194;&amp;#8194;&amp;#8194;&amp;#8195;&amp;#8195;&amp;#8195;&amp;#8195;–但還是有菜味（稍去土味？） &amp;#8194;&amp;#8194;&amp;#8194;&amp;#8195;&amp;#8195;&amp;#8195;&amp;#8195;–而且時常搞不清楚前輩為什麼這麼懂接口  &amp;#8194;&amp;#8194;&amp;#8194;&amp;#8195;&amp;#8195;&amp;#8195;&amp;#8195;">
+<meta name="twitter:image" content="http://edwardclown.github.io/Postman-高等初心者/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://EdwardClown.github.io/Postman-高等初心者/"/>
+
+
+
+
+ 
+
+
+
+
+
+
+
+    <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Coding_OR_Dying</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">engineer from taiwan</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首頁
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            歸檔
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ 
+
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://EdwardClown.github.io/Postman-高等初心者/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Edward YU">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coding_OR_Dying">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Postman 高等初心者</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-10-22T02:43:53+08:00">
+                2017-10-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/Postman-高等初心者/" class="leancloud_visitors" data-flag-title="Postman 高等初心者">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">閱讀次數&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<blockquote>
+<p>這邊文章是預想入門一陣子</p>
+</blockquote>
+</blockquote>
+<p>&#8194;&#8194;&#8194;&#8195;&#8195;&#8195;&#8195;–但還是有菜味（稍去土味？）</p>
+<p>&#8194;&#8194;&#8194;&#8195;&#8195;&#8195;&#8195;–而且時常搞不清楚前輩為什麼這麼懂接口 </p>
+<p>&#8194;&#8194;&#8194;&#8195;&#8195;&#8195;&#8195;–而自己卻搞不清楚自己的方法究竟丟了什麼鬼出來</p>
+<p>的菜菜後端參考（自己也沒好到哪去…拍飛）</p>
+<p>&#8194;&#8194;&#8194;&#8195;&#8195;&#8195;&#8195;所以想指教的高手煩請指正, 如已熟悉使用Postman請右轉   ——&gt;<br><a id="more"></a><br>有鑒於我在網路上搜索了將近一個工作天的資料</p>
+<p>&#8194;&#8194;&#8194;&#8195;&#8195;&#8195;&#8195;中文的Postman介紹大多只有貼上Url然後Send然後結束，中文的使用資料有限</p>
+<p>身為一個有信仰的工程師絕不能單單如此</p>
+<p>現在的系統開發模式開始走向微開發，以模組化的方式呼叫不同接口，以達到重複使用的想法（也包含降低伺服器負擔  和  分散系統的耦合度 的想法）<br>熟悉接口的開發和測試是必要技能。</p>
+<p>下面將從以幾點做測試</p>
+<p>&#8194;&#8194;&#8194;&#8195;1. 透過postman對api &amp; web service 發出請求測試<br>&#8194;&#8194;&#8194;&#8195;2. Postman 測試操作 ＆ Postman 請求發出前的預設參數</p>
+<h2 id="透過postman對api-amp-web-service-發出請求測試"><a href="#透過postman對api-amp-web-service-發出請求測試" class="headerlink" title="透過postman對api &amp; web service 發出請求測試"></a>透過postman對api &amp; web service 發出請求測試</h2><p>​    在某份工作時, 在做app接口的我問前輩：<br>&#8194;&#8194;&#8194;&#8195;：postman 這麼屌 能夠對發佈的api發出請求取資料那Webservice呢？<br>&#8194;&#8194;&#8194;&#8195;前：這什麼怪問題，沒人這樣用吧，反正我沒這樣用過，也沒想過這樣用（彈煙）<br>&#8194;&#8194;&#8194;&#8195;：。。。恩。。。那我們應該用不到。。。</p>
+<p>&#8194;&#8194;&#8194;&#8195;但後來的我意識到，在網頁上你只要以http協定對任何公開的服務發出請求都能使用postman來測試。<br>&#8194;&#8194;&#8194;&#8195;我現在的想法 postman = browser 只是將封包解成字串，所以如果你可以自動翻譯ＨＴＭＬ其實你也可以用它上網ＸＤ<br>&#8194;&#8194;&#8194;&#8195;首先，我先以 即匯站 的api 來做測試(<a href="https://tw.rter.info/capi.php" target="_blank" rel="external">https://tw.rter.info/capi.php</a>)<br>​<img src="/Postman-高等初心者/1.png" alt=""><br>​<img src="/Postman-高等初心者/2.png" alt=""><br>​<br><br>下面是對我找到的開放web service 做測試<br>​基本上一個正常的web service 都會有一個這樣的頁面可以看到所有提供的服務接口<br>​<img src="/Postman-高等初心者/3.png" alt=""><br>​<img src="/Postman-高等初心者/4.png" alt=""><br>框出來的部分就是在描述請求方式的<br>說明中表示 使用post請求 然後挾帶的文件格式是text/xml<br>下面則是response的說明</p>
+<p>發出正確的請求<br>​<img src="/Postman-高等初心者/5.png" alt=""><br>發出失敗的請求（原因：請求格式錯誤）<br>​<img src="/Postman-高等初心者/6.png" alt=""></p>
+<h2 id="Postman-測試操作-＆-Postman-請求發出前的預設參數"><a href="#Postman-測試操作-＆-Postman-請求發出前的預設參數" class="headerlink" title="Postman 測試操作 ＆ Postman 請求發出前的預設參數"></a>Postman 測試操作 ＆ Postman 請求發出前的預設參數</h2><p>​    接下來 如果api 或是webservice回傳的資料過多呢？<br>​<img src="/Postman-高等初心者/7.png" alt=""><br>某些api可能會回吐大量不必要的設置參數，這時利用 postman test code 能夠省去需多人力的不必要，學會 postman test code 事半功倍<br>​<img src="/Postman-高等初心者/8.png" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">if(responseCode.code == 200)</div><div class="line">&#123;</div><div class="line">​    var data = xml2Json(responseBody);</div><div class="line">​    var obj = data[&apos;soap:Envelope&apos;][&apos;soap:Body&apos;][&apos;getSupportCityResponse&apos;][&apos;getSupportCityResult&apos;].string;</div><div class="line">​    for(var i in obj)</div><div class="line">​    &#123;</div><div class="line">​        //tests[obj[i]] = obj[i] = obj[i].has(&quot;台北&quot;);</div><div class="line">​        if(obj[i].has(&quot;台北&quot;)) //字串擁有&quot;your_search_string&quot;</div><div class="line">​        &#123;</div><div class="line">​            tests[obj[i]] = true;</div><div class="line">​            var num = obj[i].replace(&quot;台北 (&quot;, &quot;&quot;);</div><div class="line">​            num = num.replace(&quot;)&quot;, &quot;&quot;);</div><div class="line">​            postman.setGlobalVariable(&quot;get-Taipei-code&quot;, num);//設置postman全域變數</div><div class="line">​        &#125;</div><div class="line">​    &#125;</div><div class="line">&#125;else&#123;</div><div class="line">​    tests[responseCode.code] = false;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>設置完 全域變數 後我們能這樣使用<br>​<img src="/Postman-高等初心者/9.png" alt=""><br>當然 還有json 轉object 的操作方式<br>​<img src="/Postman-高等初心者/10.png" alt=""><br>最後</p>
+<p>在api的開發期間通常都要大量的測試，不論在本地環境、預發布環境或是正式環境。 postman提供設置環境變數的功能 （右上角齒輪能夠點開頁面）<br>​<img src="/Postman-高等初心者/11.png" alt=""><br>看名字就能知道  這是設置你的環境變數。好啦 ！ 這是我玩的過程跟不好找到的資料的一些補充<br>​<img src="/Postman-高等初心者/12.png" alt=""><br>​<img src="/Postman-高等初心者/13.png" alt=""><br>附上postman檔案（打開postman Import就好） 有空可以玩玩 ：）</p>
+<p><a href="https://github.com/EdwardClown/EdwardClown.github.io/tree/master/2017/10/22/Postman-%E9%AB%98%E7%AD%89%E5%88%9D%E5%BF%83%E8%80%85/files" target="_blank" rel="external">下載頁面</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Postman/" rel="tag"># Postman</a>
+          
+            <a href="/tags/Learn/" rel="tag"># Learn</a>
+          
+            <a href="/tags/post/" rel="tag"># post</a>
+          
+            <a href="/tags/webservice/" rel="tag"># webservice</a>
+          
+            <a href="/tags/text-code/" rel="tag"># text code</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ 
+
+
+ 
+
+  
+
+
+ 
+ 
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            本站概覽
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Edward YU</p>
+              <p class="site-description motion-element" itemprop="description">學自網路，分享網路</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">文章</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">標籤</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#透過postman對api-amp-web-service-發出請求測試"><span class="nav-number">1.</span> <span class="nav-text">透過postman對api & web service 發出請求測試</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Postman-測試操作-＆-Postman-請求發出前的預設參數"><span class="nav-number">2.</span> <span class="nav-text">Postman 測試操作 ＆ Postman 請求發出前的預設參數</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+  
+<div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Edward YU</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" href="https://hexo.io" rel="external nofollow">Hexo</a> 強力驅動</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主題 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
+
+ 
+
+
+
+
+
+
+  
+
+ 
+  
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+ 
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+ 
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+ 
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+ 
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+
+ 
+
+
+
+
+ 
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("9YffXvP6F4awao8k61GRQhmk-gzGzoHsz", "nqDwngBGRKBPyJbem0Yoof76git clone https://github.com/iissnan/hexo-theme-next themes/next");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+ 
+ 
+  
+ 
+ 
+ 
+ 
