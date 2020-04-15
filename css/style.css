@@ -530,7 +530,7 @@ a.article-title:hover {
 .article-entry p,
 .article-entry table {
   line-height: 1.6em;
-  margin: 1.6em 0;
+  margin: 1.6em 0 0 35px;
 }
 .article-entry h1,
 .article-entry h2,
@@ -540,14 +540,20 @@ a.article-title:hover {
 .article-entry h6 {
   font-weight: bold;
 }
-.article-entry h1,
+.article-entry h1 {
+  line-height: 1.1em;
+  margin: 1.1em 0;
+}
 .article-entry h2,
-.article-entry h3,
+.article-entry h3 {
+  line-height: 1.1em;
+  margin: 1.1em 0 0 10px;
+}
 .article-entry h4,
 .article-entry h5,
 .article-entry h6 {
   line-height: 1.1em;
-  margin: 1.1em 0;
+  margin: 1.1em 0 0 10px;
 }
 .article-entry a {
   color: #258fb8;
@@ -567,7 +573,7 @@ a.article-title:hover {
   max-width: 100%;
   height: auto;
   display: block;
-  margin: auto;
+  margin: 0 auto auto 35px;
 }
 .article-entry iframe {
   border: none;
