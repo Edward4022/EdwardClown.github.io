@@ -36,7 +36,8 @@
 </blockquote>
 <a id="more"></a>
 <h2 id="簡介"><a href="#簡介" class="headerlink" title="簡介"></a>簡介</h2><p>有鑒於我在網路上搜索了將近一個工作天的資料<br>中文的<strong><em>Postman</em></strong>介紹大多只有貼上Url然後Send然後結束<br>中文的使用資料有限</p>
-<h4 id="身為一個有信仰的工程師絕不能單單如此"><a href="#身為一個有信仰的工程師絕不能單單如此" class="headerlink" title="身為一個有信仰的工程師絕不能單單如此"></a>身為一個<strong><em>有信仰的工程師</em></strong>絕不能單單如此</h4><p>現在的系統開發模式開始走向微開發，以模組化的方式呼叫不同接口，以達到重複使用的想法（也包含降低伺服器負擔 和 分散系統的耦合度 的想法）熟悉接口的開發和測試是必要技能。</p>
+<p><strong>身為一個</strong><em>有信仰的工程師</em><strong>絕不能單單如此</strong></p>
+<p>現在的系統開發模式開始走向微開發，以模組化的方式呼叫不同接口，以達到重複使用的想法（也包含降低伺服器負擔 和 分散系統的耦合度 的想法）熟悉接口的開發和測試是必要技能。</p>
 <h3 id="下面將從以幾點做測試"><a href="#下面將從以幾點做測試" class="headerlink" title="下面將從以幾點做測試"></a>下面將從以幾點做測試</h3><ol>
 <li><strong>透過postman對api &amp; web service 發出請求測試</strong></li>
 <li><strong>Postman 測試操作 ＆ Postman 請求發出前的預設參數</strong></li>
