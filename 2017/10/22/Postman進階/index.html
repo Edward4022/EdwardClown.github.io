@@ -80,7 +80,7 @@ ga('send', 'pageview');
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">886</span>
+            <span class="post-count">885</span>
         </span>
     </span>
 
@@ -130,33 +130,31 @@ ga('send', 'pageview');
 <h2 id="測試"><a href="#測試" class="headerlink" title="測試"></a>測試</h2><h3 id="起源-在某份工作時-在做app接口的我問前輩："><a href="#起源-在某份工作時-在做app接口的我問前輩：" class="headerlink" title="起源 - 在某份工作時, 在做app接口的我問前輩："></a>起源 - 在某份工作時, 在做app接口的我問前輩：</h3><blockquote>
 <p>&#8194;&#8194;&#8194;&#8194;：postman 這麼屌 能夠對發佈的api發出請求取資料那Webservice呢？<br>前輩：這什麼怪問題，沒人這樣用吧，反正我沒這樣用過，也沒想過這樣用（彈煙）<br>&#8194;&#8194;&#8194;&#8194;：。。。恩。。。那我們應該用不到。。。</p>
 </blockquote>
-<h3 id="轉變"><a href="#轉變" class="headerlink" title="轉變"></a>轉變</h3><p>後來的我意識到，<br>其實只要以<strong>http協定</strong>對任何公開的服務發出請求<strong>都能使用postman來測試</strong>。<br>可以視 <strong><em>postman = browser</em></strong> 只是將封包内容以字符顯示，</p>
+<h3 id="轉變"><a href="#轉變" class="headerlink" title="轉變"></a>轉變</h3><p>後來的我意識到，<br>其實只要以<strong>http協定</strong>對任何公開的服務發出請求<strong>都能使用postman來測試</strong>。<br>可以視 <strong><em>postman = browser</em></strong> 只是將封包内容以字符顯示</p>
 <blockquote>
 <p>如果你可以自動翻譯ＨＴＭＬ其實你也可以用它上網ＸＤ</p>
 </blockquote>
-<h3 id="透過postman對api-amp-web-service-發出請求"><a href="#透過postman對api-amp-web-service-發出請求" class="headerlink" title="透過postman對api &amp; web service 發出請求"></a>透過postman對api &amp; web service 發出請求</h3><p>首先，我先以 <em>即匯站</em> 的api 來做測試(<a href="https://tw.rter.info/capi.php" target="_blank" rel="noopener">https://tw.rter.info/capi.php</a>)<br><img src="../../../../images/Postman-進階/1.png" alt="" title="" width="auto" height="200" /><br><img src="../../../../images/Postman-進階/2.png" alt="" title="" width="auto" height="205" /></p>
-<p>下面是對我找到的開放<strong>web service(SOAP)</strong>做測試<br>基本上一個正常的<strong>web service(SOAP)</strong>都會有一個這樣的頁面可以看到所有提供的接口  </p>
-<img src="../../../../images/Postman-進階/3.png" alt="" title="" width="auto" height="165" />
-
-<p>框出來的部分就是在描述請求方式的<br>說明中表示 <strong>使用post請求</strong> 然後挾帶的<strong>文件格式</strong>是<strong>text/xml</strong><br>下面則是response的說明<br><img src="../../../../images/Postman-進階/4.png" alt="" title="" width="auto" height="175" /></p>
+<h3 id="透過postman對api-amp-web-service-發出請求"><a href="#透過postman對api-amp-web-service-發出請求" class="headerlink" title="透過postman對api &amp; web service 發出請求"></a>透過postman對api &amp; web service 發出請求</h3><p>首先，我先以 <em>即匯站</em> 的api 來做測試(<a href="https://tw.rter.info/capi.php" target="_blank" rel="noopener">https://tw.rter.info/capi.php</a>)<br><img src="../../../../images/Postman-進階/1.png" alt="" title="" width="400px"/><img src="../../../../images/Postman-進階/2.png" alt="" title="" width="400px" /></p>
+<p>下面是對另一個開放<strong>web service(SOAP)</strong>做測試<br>基本上一個正常的<strong>web service(SOAP)</strong>都會有一個這樣的頁面可以看到所有提供的接口<br><img src="../../../../images/Postman-進階/3.png" alt="" title="" width="400px"/></p>
+<p>框出來的部分就是在描述請求方式的<br>說明中表示 <strong>使用post請求</strong> 然後挾帶的<strong>文件格式</strong>是<strong>text/xml</strong><br>下面則是response的說明<br><img src="../../../../images/Postman-進階/4.png" alt="" title="" width="400px"/></p>
 <blockquote>
-<p>發出正確的請求<br><img src="../../../../images/Postman-進階/5.png" alt="" title="" width="auto" height="180" /></p>
+<p>發出正確的請求<br><img src="../../../../images/Postman-進階/5.png" alt="" title="" width="400px"/></p>
 </blockquote>
 <blockquote>
-<p>發出失敗的請求（原因：請求格式錯誤）<br><img src="../../../../images/Postman-進階/6.png" alt="" title="" width="auto" height="160" /></p>
+<p>發出失敗的請求（原因：請求格式錯誤）<br><img src="../../../../images/Postman-進階/6.png" alt="" title="" width="400px"/></p>
 </blockquote>
-<h2 id="預設參數"><a href="#預設參數" class="headerlink" title="預設參數"></a>預設參數</h2><h3 id="Postman-測試操作-＆-Postman-請求發出前的預設參數"><a href="#Postman-測試操作-＆-Postman-請求發出前的預設參數" class="headerlink" title="Postman 測試操作 ＆ Postman 請求發出前的預設參數"></a>Postman 測試操作 ＆ Postman 請求發出前的預設參數</h3><p>​<br>接下來 如果<strong>api</strong> 或是webservice回傳的<strong>資料過多</strong>呢？<br><img src="../../../../images/Postman-進階/7.png" alt="" title="" width="auto" height="210" /> </p>
-<p>某些api可能會回吐大量不必要的設置參數，<br>這時利用 <strong>postman test code</strong> 能夠省去需多人力的不必要<br><img src="../../../../images/Postman-進階/8.png" alt="" title="" width="auto" height="200" /> </p>
+<h2 id="預設參數"><a href="#預設參數" class="headerlink" title="預設參數"></a>預設參數</h2><h3 id="Postman-測試操作-＆-Postman-請求發出前的預設參數"><a href="#Postman-測試操作-＆-Postman-請求發出前的預設參數" class="headerlink" title="Postman 測試操作 ＆ Postman 請求發出前的預設參數"></a>Postman 測試操作 ＆ Postman 請求發出前的預設參數</h3><p>​<br>接下來 如果<strong>api</strong> 或是webservice回傳的<strong>資料過多</strong>呢？<br><img src="../../../../images/Postman-進階/7.png" alt="" title="" width="400px"/> </p>
+<p>某些api可能會回吐大量不必要的設置參數，<br>這時利用 <strong>postman test code</strong> 能夠省去需多人力的不必要<br><img src="../../../../images/Postman-進階/8.png" alt="" title="" width="400px"/> </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">if(responseCode.code &#x3D;&#x3D; 200)</span><br><span class="line">&#123;</span><br><span class="line">​    var data &#x3D; xml2Json(responseBody);</span><br><span class="line">​    var obj &#x3D; data[&#39;soap:Envelope&#39;][&#39;soap:Body&#39;][&#39;getSupportCityResponse&#39;][&#39;getSupportCityResult&#39;].string;</span><br><span class="line">​    for(var i in obj)</span><br><span class="line">​    &#123;</span><br><span class="line">​        &#x2F;&#x2F;tests[obj[i]] &#x3D; obj[i] &#x3D; obj[i].has(&quot;台北&quot;);</span><br><span class="line">​        if(obj[i].has(&quot;台北&quot;)) &#x2F;&#x2F;字串擁有&quot;your_search_string&quot;</span><br><span class="line">​        &#123;</span><br><span class="line">​            tests[obj[i]] &#x3D; true;</span><br><span class="line">​            var num &#x3D; obj[i].replace(&quot;台北 (&quot;, &quot;&quot;);</span><br><span class="line">​            num &#x3D; num.replace(&quot;)&quot;, &quot;&quot;);</span><br><span class="line">​            postman.setGlobalVariable(&quot;get-Taipei-code&quot;, num);&#x2F;&#x2F;設置postman全域變數</span><br><span class="line">​        &#125;</span><br><span class="line">​    &#125;</span><br><span class="line">&#125;else&#123;</span><br><span class="line">​    tests[responseCode.code] &#x3D; false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>設置完 全域變數 後我們能這樣使用<br><img src="../../../../images/Postman-進階/9.png" alt="" title="" width="auto" height="200" /><br>當然 還有<strong>json 轉object</strong> 的操作方式<br><img src="../../../../images/Postman-進階/10.png" alt="" title="" width="auto" height="180" /><br>最後</p>
+<p>設置完 全域變數 後我們能這樣使用<br><img src="../../../../images/Postman-進階/9.png" alt="" title="" width="400px"/><br>當然 還有<strong>json 轉object</strong> 的操作方式<br><img src="../../../../images/Postman-進階/10.png" alt="" title="" width="400px"/><br>最後</p>
 <p>在api的開發期間通常都要大量的測試，<br>不論在本地環境、預發布環境或是正式環境。<br>postman提供設置環境變數的功能 （右上角齒輪能夠點開頁面）</p>
-<img src="../../../../images/Postman-進階/11.png" alt="" title="" width="auto" height="150" /> 
+<img src="../../../../images/Postman-進階/11.png" alt="" title="" width="400px"/> 
 看名字就能知道  
 這是設置你的環境變數。好啦 ！ 這是我玩的過程做的小小記錄
 
-<img src="../../../../images/Postman-進階/12.png" alt="" title="" width="auto" height="180" /> 
-<img src="../../../../images/Postman-進階/13.png" alt="" title="" width="auto" height="260" /> 
+<img src="../../../../images/Postman-進階/12.png" alt="" title="" width="400px"/> 
+<img src="../../../../images/Postman-進階/13.png" alt="" title="" width="400px"/> 
       
       <!-- reward -->
       
