@@ -28,4 +28,42 @@
         <tag>text code</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Postman 中等初心者</title>
+    <url>/2017/10/22/Post%E4%B8%AD%E7%AD%89%E5%88%9D%E5%BF%83%E8%80%85/</url>
+    <content><![CDATA[<blockquote>
+<blockquote>
+<p>這邊文章是預想入門一陣子</p>
+</blockquote>
+</blockquote>
+<p>&#8194;&#8194;&#8194;&#8195;&#8195;&#8195;&#8195;–但還是有菜味（稍去土味？）</p>
+<p>&#8194;&#8194;&#8194;&#8195;&#8195;&#8195;&#8195;–而且時常搞不清楚前輩為什麼這麼懂接口 </p>
+<p>&#8194;&#8194;&#8194;&#8195;&#8195;&#8195;&#8195;–而自己卻搞不清楚自己的方法究竟丟了什麼鬼出來</p>
+<p>的菜菜後端參考（自己也沒好到哪去…拍飛）</p>
+<p>&#8194;&#8194;&#8194;&#8195;&#8195;&#8195;&#8195;所以想指教的高手煩請指正, 如已熟悉使用Postman請右轉   ——&gt;</p>
+<a id="more"></a>
+<p>有鑒於我在網路上搜索了將近一個工作天的資料</p>
+<p>&#8194;&#8194;&#8194;&#8195;&#8195;&#8195;&#8195;中文的Postman介紹大多只有貼上Url然後Send然後結束，中文的使用資料有限</p>
+<p>身為一個有信仰的工程師絕不能單單如此</p>
+<p>現在的系統開發模式開始走向微開發，以模組化的方式呼叫不同接口，以達到重複使用的想法（也包含降低伺服器負擔  和  分散系統的耦合度 的想法）<br>熟悉接口的開發和測試是必要技能。</p>
+<p>下面將從以幾點做測試</p>
+<p>&#8194;&#8194;&#8194;&#8195;1. 透過postman對api &amp; web service 發出請求測試<br>&#8194;&#8194;&#8194;&#8195;2. Postman 測試操作 ＆ Postman 請求發出前的預設參數</p>
+<h2 id="透過postman對api-amp-web-service-發出請求測試"><a href="#透過postman對api-amp-web-service-發出請求測試" class="headerlink" title="透過postman對api &amp; web service 發出請求測試"></a>透過postman對api &amp; web service 發出請求測試</h2><p>​    在某份工作時, 在做app接口的我問前輩：<br>&#8194;&#8194;&#8194;&#8195;：postman 這麼屌 能夠對發佈的api發出請求取資料那Webservice呢？<br>&#8194;&#8194;&#8194;&#8195;前：這什麼怪問題，沒人這樣用吧，反正我沒這樣用過，也沒想過這樣用（彈煙）<br>&#8194;&#8194;&#8194;&#8195;：。。。恩。。。那我們應該用不到。。。</p>
+<p>&#8194;&#8194;&#8194;&#8195;但後來的我意識到，在網頁上你只要以http協定對任何公開的服務發出請求都能使用postman來測試。<br>&#8194;&#8194;&#8194;&#8195;我現在的想法 postman = browser 只是將封包解成字串，所以如果你可以自動翻譯ＨＴＭＬ其實你也可以用它上網ＸＤ<br>&#8194;&#8194;&#8194;&#8195;首先，我先以 即匯站 的api 來做測試(<a href="https://tw.rter.info/capi.php" target="_blank" rel="noopener">https://tw.rter.info/capi.php</a>)<br><img src="/images/Postman-%E4%B8%AD%E7%AD%89%E5%88%9D%E5%BF%83%E8%80%85/1.png" alt=""><br><img src="/images/Postman-%E4%B8%AD%E7%AD%89%E5%88%9D%E5%BF%83%E8%80%85/2.png" alt=""><br><br /><br>下面是對我找到的開放web service 做測試<br>基本上一個正常的web service 都會有一個這樣的頁面可以看到所有提供的服務接口<br>​<img src="/images/Postman-%E4%B8%AD%E7%AD%89%E5%88%9D%E5%BF%83%E8%80%85/3.png" alt=""><br>​<img src="/images/Postman-%E4%B8%AD%E7%AD%89%E5%88%9D%E5%BF%83%E8%80%85/4.png" alt=""><br>框出來的部分就是在描述請求方式的<br>說明中表示 使用post請求 然後挾帶的文件格式是text/xml<br>下面則是response的說明</p>
+<p>發出正確的請求<br><img src="/images/Postman-%E4%B8%AD%E7%AD%89%E5%88%9D%E5%BF%83%E8%80%85/5.png" alt=""><br>發出失敗的請求（原因：請求格式錯誤）<br><img src="/images/Postman-%E4%B8%AD%E7%AD%89%E5%88%9D%E5%BF%83%E8%80%85/6.png" alt=""></p>
+<h2 id="Postman-測試操作-＆-Postman-請求發出前的預設參數"><a href="#Postman-測試操作-＆-Postman-請求發出前的預設參數" class="headerlink" title="Postman 測試操作 ＆ Postman 請求發出前的預設參數"></a>Postman 測試操作 ＆ Postman 請求發出前的預設參數</h2><p>​    接下來 如果api 或是webservice回傳的資料過多呢？<br><img src="/images/Postman-%E4%B8%AD%E7%AD%89%E5%88%9D%E5%BF%83%E8%80%85/7.png" alt=""><br>某些api可能會回吐大量不必要的設置參數，這時利用 postman test code 能夠省去需多人力的不必要，學會 postman test code 事半功倍<br><img src="/images/Postman-%E4%B8%AD%E7%AD%89%E5%88%9D%E5%BF%83%E8%80%85/8.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if(responseCode.code &#x3D;&#x3D; 200)</span><br><span class="line">&#123;</span><br><span class="line">​    var data &#x3D; xml2Json(responseBody);</span><br><span class="line">​    var obj &#x3D; data[&#39;soap:Envelope&#39;][&#39;soap:Body&#39;][&#39;getSupportCityResponse&#39;][&#39;getSupportCityResult&#39;].string;</span><br><span class="line">​    for(var i in obj)</span><br><span class="line">​    &#123;</span><br><span class="line">​        &#x2F;&#x2F;tests[obj[i]] &#x3D; obj[i] &#x3D; obj[i].has(&quot;台北&quot;);</span><br><span class="line">​        if(obj[i].has(&quot;台北&quot;)) &#x2F;&#x2F;字串擁有&quot;your_search_string&quot;</span><br><span class="line">​        &#123;</span><br><span class="line">​            tests[obj[i]] &#x3D; true;</span><br><span class="line">​            var num &#x3D; obj[i].replace(&quot;台北 (&quot;, &quot;&quot;);</span><br><span class="line">​            num &#x3D; num.replace(&quot;)&quot;, &quot;&quot;);</span><br><span class="line">​            postman.setGlobalVariable(&quot;get-Taipei-code&quot;, num);&#x2F;&#x2F;設置postman全域變數</span><br><span class="line">​        &#125;</span><br><span class="line">​    &#125;</span><br><span class="line">&#125;else&#123;</span><br><span class="line">​    tests[responseCode.code] &#x3D; false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>設置完 全域變數 後我們能這樣使用<br><img src="/images/Postman-%E4%B8%AD%E7%AD%89%E5%88%9D%E5%BF%83%E8%80%85/9.png" alt=""><br>當然 還有json 轉object 的操作方式<br><img src="/images/Postman-%E4%B8%AD%E7%AD%89%E5%88%9D%E5%BF%83%E8%80%85/10.png" alt=""><br>最後</p>
+<p>在api的開發期間通常都要大量的測試，不論在本地環境、預發布環境或是正式環境。 postman提供設置環境變數的功能 （右上角齒輪能夠點開頁面）<br><img src="/images/Postman-%E4%B8%AD%E7%AD%89%E5%88%9D%E5%BF%83%E8%80%85/11.png" alt=""><br>看名字就能知道  這是設置你的環境變數。好啦 ！ 這是我玩的過程跟不好找到的資料的一些補充<br><img src="/images/Postman-%E4%B8%AD%E7%AD%89%E5%88%9D%E5%BF%83%E8%80%85/12.png" alt=""><br><img src="/images/Postman-%E4%B8%AD%E7%AD%89%E5%88%9D%E5%BF%83%E8%80%85/13.png" alt=""><br>附上postman檔案（打開postman Import就好） 有空可以玩玩 ：）</p>
+]]></content>
+      <tags>
+        <tag>Postman</tag>
+        <tag>Learn</tag>
+        <tag>post</tag>
+        <tag>webservice</tag>
+        <tag>text code</tag>
+        <tag>API測試</tag>
+      </tags>
+  </entry>
 </search>
