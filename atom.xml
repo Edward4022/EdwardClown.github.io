@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://edwardclown.github.io/"/>
-  <updated>2020-04-15T05:05:47.063Z</updated>
+  <updated>2020-04-15T16:22:16.989Z</updated>
   <id>https://edwardclown.github.io/</id>
   
   <author>
@@ -21,17 +21,11 @@
     <link href="https://edwardclown.github.io/2020/04/14/hello-world/"/>
     <id>https://edwardclown.github.io/2020/04/14/hello-world/</id>
     <published>2020-04-14T08:10:14.817Z</published>
-    <updated>2020-04-15T05:05:47.063Z</updated>
+    <updated>2020-04-15T16:22:16.989Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a
-        
-      
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
     
     </summary>
     
@@ -39,15 +33,7 @@
       <category term="Hello" scheme="https://edwardclown.github.io/categories/Hello/"/>
     
     
-      <category term="Postman" scheme="https://edwardclown.github.io/tags/Postman/"/>
-    
-      <category term="Learn" scheme="https://edwardclown.github.io/tags/Learn/"/>
-    
-      <category term="post" scheme="https://edwardclown.github.io/tags/post/"/>
-    
-      <category term="webservice" scheme="https://edwardclown.github.io/tags/webservice/"/>
-    
-      <category term="text code" scheme="https://edwardclown.github.io/tags/text-code/"/>
+      <category term="Hello World" scheme="https://edwardclown.github.io/tags/Hello-World/"/>
     
   </entry>
   
