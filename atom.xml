@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://edwardclown.github.io/"/>
-  <updated>2020-04-16T14:11:45.339Z</updated>
+  <updated>2020-04-16T14:38:08.542Z</updated>
   <id>https://edwardclown.github.io/</id>
   
   <author>
@@ -21,24 +21,25 @@
     <link href="https://edwardclown.github.io/2020-04-16-Exceptionless-In-WinServer2012-Azure.html"/>
     <id>https://edwardclown.github.io/2020-04-16-Exceptionless-In-WinServer2012-Azure.html</id>
     <published>2020-04-16T13:49:33.000Z</published>
-    <updated>2020-04-16T14:11:45.339Z</updated>
+    <updated>2020-04-16T14:38:08.542Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;blockquote&gt;
-&lt;p&gt;這篇是一點小筆記，問題在最後哦！&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h1 id=&quot;exceptionless-5-0-0-本地运行&quot;&gt;&lt;a href=&quot;#exceptionless-5-0-0-本地运行&quot; class=&quot;headerlink&quot;
-        
-      
+      ExceptionLess 在 Azure Windows Server 2012 上搭建時踩過的坑
     
     </summary>
     
     
+      <category term="後端技巧" scheme="https://edwardclown.github.io/categories/%E5%BE%8C%E7%AB%AF%E6%8A%80%E5%B7%A7/"/>
+    
+    
+      <category term="Learn" scheme="https://edwardclown.github.io/tags/Learn/"/>
+    
+      <category term="工具" scheme="https://edwardclown.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="ExceptionLess" scheme="https://edwardclown.github.io/tags/ExceptionLess/"/>
+    
+      <category term="日志管理" scheme="https://edwardclown.github.io/tags/%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86/"/>
     
   </entry>
   
@@ -47,11 +48,11 @@
     <link href="https://edwardclown.github.io/2020-04-14-hello-world.html"/>
     <id>https://edwardclown.github.io/2020-04-14-hello-world.html</id>
     <published>2020-04-14T08:10:14.817Z</published>
-    <updated>2020-04-15T16:22:16.989Z</updated>
+    <updated>2020-04-16T14:27:47.997Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+      測試頁面別介意
     
     </summary>
     
@@ -68,16 +69,11 @@
     <link href="https://edwardclown.github.io/2017-10-22-Postman%E9%80%B2%E9%9A%8E.html"/>
     <id>https://edwardclown.github.io/2017-10-22-Postman%E9%80%B2%E9%9A%8E.html</id>
     <published>2017-10-21T18:43:53.000Z</published>
-    <updated>2020-04-16T14:16:48.708Z</updated>
+    <updated>2020-04-16T14:32:09.932Z</updated>
     
     <summary type="html">
     
-      &lt;blockquote&gt;
-&lt;p&gt;這篇文章預想是給入門一陣子&lt;br&gt;但是有菜味（稍去土味？）&lt;br&gt;而且時常搞不清楚前輩為什麼這麼懂接口&lt;br&gt;而自己卻搞不清楚自己的API究竟丟了什麼鬼出來&lt;br&gt;的菜菜–&lt;strong&gt;我&lt;/strong&gt;  &lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;煩請高手指正, 熟悉使用Postman請大力鞭策  &lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/blockquote&gt;
+      Post跳脫url Post 複製貼上的一小步
     
     </summary>
     

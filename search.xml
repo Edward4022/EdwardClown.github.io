@@ -81,7 +81,7 @@
     <title>Exceptionless In WinServer2012(Azure)</title>
     <url>/2020-04-16-Exceptionless-In-WinServer2012-Azure.html</url>
     <content><![CDATA[<blockquote>
-<p>這篇是一點小筆記，問題在最後哦！</p>
+<p>公司日漸壯大 越來越多的日志和伺服器讓人毛骨悚然！！！<br>Exceptionless 的方式算是日志管理的趨勢了吧？<br>這篇算是一點小筆記，記錄點遇到的狀況，問題在最後哦！</p>
 </blockquote>
 <h1 id="exceptionless-5-0-0-本地运行"><a href="#exceptionless-5-0-0-本地运行" class="headerlink" title="exceptionless 5.0.0 本地运行"></a>exceptionless 5.0.0 本地运行</h1><ol>
 <li>下载 docker desktop</li>
@@ -129,5 +129,14 @@
 </ol>
 <p><em>ExceptionLess 維護及使用後面在看是不是加上來</em></p>
 ]]></content>
+      <categories>
+        <category>後端技巧</category>
+      </categories>
+      <tags>
+        <tag>Learn</tag>
+        <tag>工具</tag>
+        <tag>ExceptionLess</tag>
+        <tag>日志管理</tag>
+      </tags>
   </entry>
 </search>
