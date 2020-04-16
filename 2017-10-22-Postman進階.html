@@ -73,6 +73,10 @@ ga('send', 'pageview');
   <time datetime="2017-10-21T18:43:53.000Z" itemprop="datePublished">2017-10-22</time>
 </a>
       
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%BE%8C%E7%AB%AF%E6%8A%80%E5%B7%A7/">後端技巧</a>
+  </div>
+
       
       
 <div class="word_count">
@@ -148,8 +152,8 @@ ga('send', 'pageview');
 <p>某些api可能會回吐大量不必要的設置參數，<br>這時利用 <strong>postman test code</strong> 能夠省去需多人力的不必要<br><img src="../../../../images/Postman-進階/8.png" alt="" title="" width="400px"/> </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">if(responseCode.code &#x3D;&#x3D; 200)</span><br><span class="line">&#123;</span><br><span class="line">​    var data &#x3D; xml2Json(responseBody);</span><br><span class="line">​    var obj &#x3D; data[&#39;soap:Envelope&#39;][&#39;soap:Body&#39;][&#39;getSupportCityResponse&#39;][&#39;getSupportCityResult&#39;].string;</span><br><span class="line">​    for(var i in obj)</span><br><span class="line">​    &#123;</span><br><span class="line">​        &#x2F;&#x2F;tests[obj[i]] &#x3D; obj[i] &#x3D; obj[i].has(&quot;台北&quot;);</span><br><span class="line">​        if(obj[i].has(&quot;台北&quot;)) &#x2F;&#x2F;字串擁有&quot;your_search_string&quot;</span><br><span class="line">​        &#123;</span><br><span class="line">​            tests[obj[i]] &#x3D; true;</span><br><span class="line">​            var num &#x3D; obj[i].replace(&quot;台北 (&quot;, &quot;&quot;);</span><br><span class="line">​            num &#x3D; num.replace(&quot;)&quot;, &quot;&quot;);</span><br><span class="line">​            postman.setGlobalVariable(&quot;get-Taipei-code&quot;, num);&#x2F;&#x2F;設置postman全域變數</span><br><span class="line">​        &#125;</span><br><span class="line">​    &#125;</span><br><span class="line">&#125;else&#123;</span><br><span class="line">​    tests[responseCode.code] &#x3D; false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>設置完 全域變數 後我們能這樣使用<br><img src="../../../../images/Postman-進階/9.png" alt="" title="" width="400px"/><br>當然 還有<strong>json 轉object</strong> 的操作方式<br><img src="../../../../images/Postman-進階/10.png" alt="" title="" width="400px"/><br>最後</p>
-<p>在api的開發期間通常都要大量的測試，<br>不論在本地環境、預發布環境或是正式環境。<br>postman提供設置環境變數的功能 （右上角齒輪能夠點開頁面）<br><img src="../../../../images/Postman-進階/11.png" alt="" title="" width="400px"/>  </p>
+<p>設置完 全域變數 後我們能這樣使用<br><img src="../../../../images/Postman-進階/9.png" alt="" title="" width="400px"/><br>當然 還有<strong>json 轉object</strong> 的操作方式<br><img src="../../../../images/Postman-進階/10.png" alt="" title="" width="400px"/>  </p>
+<h2 id="補充"><a href="#補充" class="headerlink" title="補充"></a>補充</h2><p>在api的開發期間通常都要大量的測試，<br>不論在本地環境、預發布環境或是正式環境。<br>postman提供設置環境變數的功能 （右上角齒輪能夠點開頁面）<br><img src="../../../../images/Postman-進階/11.png" alt="" title="" width="400px"/>  </p>
 <blockquote>
 <p>看名字就能知道<br>這是設置你的環境變數。好啦 ！ 這是我玩的過程做的小小記錄<br><img src="../../../../images/Postman-進階/12.png" alt="" title="" width="400px"/><br><img src="../../../../images/Postman-進階/13.png" alt="" title="" width="400px"/> </p>
 </blockquote>
@@ -236,7 +240,7 @@ ga('send', 'pageview');
   <nav class="article-nav">
     
       <a href="/2020-04-14-hello-world.html" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
+        <strong class="article-nav-caption">下一篇</strong>
         <div class="article-nav-title">
           
             hello-world

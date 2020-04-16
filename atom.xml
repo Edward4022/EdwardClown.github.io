@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://edwardclown.github.io/"/>
-  <updated>2020-04-15T16:22:16.989Z</updated>
+  <updated>2020-04-16T14:11:45.339Z</updated>
   <id>https://edwardclown.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Exceptionless In WinServer2012(Azure)</title>
+    <link href="https://edwardclown.github.io/2020-04-16-Exceptionless-In-WinServer2012-Azure.html"/>
+    <id>https://edwardclown.github.io/2020-04-16-Exceptionless-In-WinServer2012-Azure.html</id>
+    <published>2020-04-16T13:49:33.000Z</published>
+    <updated>2020-04-16T14:11:45.339Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;這篇是一點小筆記，問題在最後哦！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;exceptionless-5-0-0-本地运行&quot;&gt;&lt;a href=&quot;#exceptionless-5-0-0-本地运行&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>hello-world</title>
@@ -42,7 +68,7 @@
     <link href="https://edwardclown.github.io/2017-10-22-Postman%E9%80%B2%E9%9A%8E.html"/>
     <id>https://edwardclown.github.io/2017-10-22-Postman%E9%80%B2%E9%9A%8E.html</id>
     <published>2017-10-21T18:43:53.000Z</published>
-    <updated>2020-04-16T13:00:51.416Z</updated>
+    <updated>2020-04-16T14:16:48.708Z</updated>
     
     <summary type="html">
     
@@ -55,6 +81,8 @@
     
     </summary>
     
+    
+      <category term="後端技巧" scheme="https://edwardclown.github.io/categories/%E5%BE%8C%E7%AB%AF%E6%8A%80%E5%B7%A7/"/>
     
     
       <category term="Postman" scheme="https://edwardclown.github.io/tags/Postman/"/>
