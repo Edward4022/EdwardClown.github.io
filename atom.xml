@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://edwardclown.github.io/"/>
-  <updated>2020-04-17T08:22:21.454Z</updated>
+  <updated>2020-04-17T08:41:41.665Z</updated>
   <id>https://edwardclown.github.io/</id>
   
   <author>
@@ -21,11 +21,11 @@
     <link href="https://edwardclown.github.io/2020-04-17-Jenkins-with-net-Core-net-Framework.html"/>
     <id>https://edwardclown.github.io/2020-04-17-Jenkins-with-net-Core-net-Framework.html</id>
     <published>2020-04-17T07:28:51.000Z</published>
-    <updated>2020-04-17T08:22:21.454Z</updated>
+    <updated>2020-04-17T08:41:41.665Z</updated>
     
     <summary type="html">
     
-      ExceptionLess 在 Azure Windows Server 2012 上搭建時踩過的坑
+      Jenkins 在 Windows Server 2012 上搭建時踩過的坑
     
     </summary>
     
@@ -37,9 +37,11 @@
     
       <category term="工具" scheme="https://edwardclown.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
     
-      <category term="ExceptionLess" scheme="https://edwardclown.github.io/tags/ExceptionLess/"/>
+      <category term="Jenkins" scheme="https://edwardclown.github.io/tags/Jenkins/"/>
     
-      <category term="日志管理" scheme="https://edwardclown.github.io/tags/%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86/"/>
+      <category term="整合管理" scheme="https://edwardclown.github.io/tags/%E6%95%B4%E5%90%88%E7%AE%A1%E7%90%86/"/>
+    
+      <category term="CI/CD" scheme="https://edwardclown.github.io/tags/CI-CD/"/>
     
   </entry>
   
