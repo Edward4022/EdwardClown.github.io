@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://edwardclown.github.io/about/index.html</loc>
+    
+    <lastmod>2020-04-17T05:15:39.716Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://edwardclown.github.io/2020-04-16-Exceptionless-In-WinServer2012-Azure.html</loc>
     
     <lastmod>2020-04-16T14:40:57.956Z</lastmod>
@@ -19,13 +26,6 @@
     <loc>https://edwardclown.github.io/2020-04-14-hello-world.html</loc>
     
     <lastmod>2020-04-16T14:38:15.705Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://edwardclown.github.io/about/index.html</loc>
-    
-    <lastmod>2020-04-15T16:26:53.188Z</lastmod>
     
   </url>
   
