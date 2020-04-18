@@ -90,7 +90,7 @@ ga('send', 'pageview');
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">1.6k</span>
+            <span class="post-count">1.5k</span>
         </span>
     </span>
 
@@ -250,14 +250,36 @@ ga('send', 'pageview');
 <p>git 熟練的可以直接在 Blog/public init 開新倉庫后，<br>設置remote 為剛複製的鏈接</p>
 </blockquote>
 <ol start="4">
-<li>Git 三連擊<br>在 Blog/public 中 Shift+滑鼠右鍵 開啓PowerShell<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">hexo g -d</span><br><span class="line"></span><br><span class="line">git add .</span><br><span class="line"></span><br><span class="line">git commit -m &#39;&#123;看你喜歡怎麽描述&#125;&#39;  </span><br><span class="line">#請習慣 &#39;Add:New Article&#39; or &#39;Modify: Something&#39;</span><br><span class="line">#便於之後git 管理</span><br><span class="line"></span><br><span class="line">git push</span><br><span class="line">&#96;&#96;&#96;  </span><br><span class="line">&lt;img src&#x3D;&quot;..&#x2F;..&#x2F;..&#x2F;..&#x2F;images&#x2F;Hexo-部署筆記&#x2F;9.png&quot; alt&#x3D;&quot;&quot; title&#x3D;&quot;&quot; width&#x3D;&quot;400px&quot;&#x2F;&gt;  </span><br><span class="line">&gt; git的部分，是需要花時間學習的， 不論用不用，git的思想對程式設計也是有幫助的</span><br><span class="line"></span><br><span class="line">5. 開啓 https:&#x2F;&#x2F;&#123;your repository&#125;.github.io  </span><br><span class="line">你的頁面就好啦~~~~</span><br><span class="line"></span><br><span class="line"># 補充</span><br><span class="line"></span><br><span class="line">## Google Ad</span><br><span class="line">還沒過，過了上了再補充</span><br><span class="line"></span><br><span class="line">## Google Search</span><br><span class="line">1. 進入到 Blog 安裝sitemap 套件</span><br><span class="line">&#96;$ npm install hexo-generator-sitemap --save&#96;</span><br><span class="line">2. Blog&#x2F;_config.yml 最下面貼上</span><br></pre></td></tr></table></figure>
-#Sitemap<br>sitemap:S<br> path: sitemap.xml<br>```</li>
-<li>然後到 <a href="https://search.google.com/search-console" target="_blank" rel="noopener">Google Search Console</a> 中注冊登入， 新增資源<img src="../../../../images/Hexo-部署筆記/9.png" alt="" title="" width="400px"/></li>
-<li>點擊之後 掃描 sitemap.xml 即可錄入 google search 中啦<img src="../../../../images/Hexo-部署筆記/10.png" alt="" title="" width="400px"/>
-
+<li>Git 三連擊<br>在 Blog/public 中 Shift+滑鼠右鍵 開啓PowerShell<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">hexo g -d</span><br><span class="line"></span><br><span class="line">git add .</span><br><span class="line"></span><br><span class="line">git commit -m &#39;&#123;看你喜歡怎麽描述&#125;&#39;  </span><br><span class="line">#請習慣 &#39;Add:New Article&#39; or &#39;Modify: Something&#39;</span><br><span class="line">#便於之後git 管理</span><br><span class="line"></span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
 
 </li>
 </ol>
+<img src="../../../../images/Hexo-部署筆記/9.png" alt="" title="" width="400px"/>  
+
+<blockquote>
+<p>git的部分，是需要花時間學習的， 不論用不用，git的思想對程式設計也是有幫助的</p>
+</blockquote>
+<ol start="5">
+<li>開啓 https://{your repository}.github.io<br>你的頁面就好啦<del>~</del></li>
+</ol>
+<h1 id="補充"><a href="#補充" class="headerlink" title="補充"></a>補充</h1><h2 id="Google-Ad"><a href="#Google-Ad" class="headerlink" title="Google Ad"></a>Google Ad</h2><p>還沒過，過了上了再補充</p>
+<h2 id="Google-Search"><a href="#Google-Search" class="headerlink" title="Google Search"></a>Google Search</h2><ol>
+<li>進入到 Blog 安裝sitemap 套件<br><code>$ npm install hexo-generator-sitemap --save</code></li>
+<li>Blog/_config.yml 最下面貼上</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#Sitemap</span><br><span class="line">sitemap:S</span><br><span class="line">    path: sitemap.xml</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>然後到 <a href="https://search.google.com/search-console" target="_blank" rel="noopener">Google Search Console</a> 中注冊登入， 新增資源</li>
+</ol>
+<img src="../../../../images/Hexo-部署筆記/9.png" alt="" title="" width="400px"/>
+
+<ol start="4">
+<li>點擊之後 掃描 sitemap.xml 即可錄入 google search 中啦</li>
+</ol>
+<img src="../../../../images/Hexo-部署筆記/10.png" alt="" title="" width="400px"/>
+
+
 <h2 id="Google-Analytics"><a href="#Google-Analytics" class="headerlink" title="Google Analytics"></a>Google Analytics</h2><ol>
 <li>先到 <a href="https://marketingplatform.google.com/about/analytics/" target="_blank" rel="noopener">Google Analytics</a> 首頁 登入或建立帳戶，新增一個資源，填完以後按取得追蹤編號.  </li>
 <li>Blog/theme/ayer/_config.yml<br>找到 google_analytics 添加申請到的追蹤編號</li>
