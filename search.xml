@@ -231,4 +231,118 @@
         <tag>CI/CD</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Hexo 部署筆記</title>
+    <url>/2020-04-18-Hexo-%E9%83%A8%E7%BD%B2%E7%AD%86%E8%A8%98.html</url>
+    <content><![CDATA[<blockquote>
+<p>過了好久，算是疫情下的覺醒？<br>終於在巧合下想起寫筆記部落格<br>在幾經選擇下坊間的Blog 都沒法滿足我想要的自由度，最後我選用Hexo<br>作者Tommy Chen是台灣人，而且身爲網絡相關從業人員，必須支持對吧！<br>而且熟練使用git的人，對MD語法應該都有鍾愛 : )</p>
+</blockquote>
+<h3 id="Hexo-官方站點"><a href="#Hexo-官方站點" class="headerlink" title="Hexo 官方站點"></a>Hexo 官方站點</h3><p><a href="https://hexo.io/zh-tw/" target="_blank" rel="noopener">https://hexo.io/zh-tw/</a></p>
+<blockquote>
+<p>操作環境<br>作業系統：Windows 10<br>編譯器：windows PowerShell<br>Markdown編輯器：Visual Studio code</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="安裝環境"><a href="#安裝環境" class="headerlink" title="安裝環境"></a>安裝環境</h1><h3 id="Git-安裝"><a href="#Git-安裝" class="headerlink" title="Git 安裝"></a>Git 安裝</h3><ol>
+<li><a href="http://www.google.com/" target="_blank" rel="noopener">下載最新版Git</a></li>
+<li>依照安裝步驟，下一步下一步…結束</li>
+<li>PowerShell 檢查安裝結果<br><code>git --version</code><img src="../../../../images/Hexo-部署筆記/1.png" alt="" title="" width="400px"/>
+
+</li>
+</ol>
+<h3 id="安装Node"><a href="#安装Node" class="headerlink" title="安装Node"></a>安装Node</h3><ol>
+<li><a href="https://nodejs.org/en/" target="_blank" rel="noopener">直接下載安裝包</a></li>
+<li>依照安裝步驟，下一步下一步…結束</li>
+<li>PowerShell 檢查安裝結果<br><code>node -v</code><img src="../../../../images/Hexo-部署筆記/2.png" alt="" title="" width="400px"/>
+
+</li>
+</ol>
+<blockquote>
+<p>有點忘記npm 是不是要單獨安裝<br><code>npm install</code></p>
+</blockquote>
+<h3 id="安裝Visual-Studio-Code"><a href="#安裝Visual-Studio-Code" class="headerlink" title="安裝Visual Studio Code"></a>安裝Visual Studio Code</h3><ol>
+<li>上鏈接 <a href="https://code.visualstudio.com/" target="_blank" rel="noopener">VScode</a></li>
+<li>下載完下一步連點結束</li>
+<li>開啓 VS code 安裝插件<img src="../../../../images/Hexo-部署筆記/4.png" alt="" title="" width="400px" height="200px"/>
+
+
+</li>
+</ol>
+<h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><ol>
+<li>PowerShell 安裝<br><code>npm install -g hexo-cli</code></li>
+<li>PowerShell 檢查安裝結果<br><code>hexo -v</code><img src="../../../../images/Hexo-部署筆記/3.png" alt="" title="" width="400px"/>
+
+</li>
+</ol>
+<h1 id="初始化Blog"><a href="#初始化Blog" class="headerlink" title="初始化Blog"></a>初始化Blog</h1><p>創建基本專案:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 創建Blog目錄及基本文件</span><br><span class="line">hexo init Blog</span><br><span class="line"># 進入Blog 目錄</span><br><span class="line">cd Blog</span><br><span class="line"># 安裝Hexo的基礎插件，存放在node_modules</span><br><span class="line">npm install</span><br><span class="line"># 新增分類頁面</span><br><span class="line">hexo new page categories</span><br><span class="line"># 新增標簽頁面</span><br><span class="line">hexo new page tags</span><br></pre></td></tr></table></figure>
+
+<h3 id="Hexo-基本架構"><a href="#Hexo-基本架構" class="headerlink" title="Hexo 基本架構"></a>Hexo 基本架構</h3><p>使用VS code   File-&gt;OpenFolder-&gt;選擇Blog 目錄<br>左邊列表可看到下面架構</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Blog</span><br><span class="line">├── _config.yml     --Hexo基本參數(開關)</span><br><span class="line">├── package.json    --Node專案基本信息</span><br><span class="line">├── scaffolds       --模版文件</span><br><span class="line">├── source          --資源庫</span><br><span class="line">|   ├── _posts      --MarkDown 文件</span><br><span class="line">|   ├── about       --關於</span><br><span class="line">|   ├── categories  --分類(可不管)</span><br><span class="line">|   ├── images      --圖片檔案</span><br><span class="line">|   └── tag         --標簽(可不管)</span><br><span class="line">├── themes          --主題</span><br><span class="line">|   └── landscape   --預設主題</span><br><span class="line">└── node_modules</span><br></pre></td></tr></table></figure>
+
+<h3 id="變更Hexo-主題"><a href="#變更Hexo-主題" class="headerlink" title="變更Hexo 主題"></a>變更Hexo 主題</h3><blockquote>
+<p>官網上還有很多主題可以選用哦！這邊我使用的是 A-Ayer</p>
+</blockquote>
+<ol>
+<li><p>安裝 ayer</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 到Blog根目錄</span><br><span class="line">cd Blog</span><br><span class="line"># 輸入命令安裝主題</span><br><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;Shen-Yu&#x2F;hexo-theme-ayer.git themes&#x2F;ayer</span><br></pre></td></tr></table></figure></li>
+<li><p>Hexo參數調整</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 根目錄下 _config.yml 的 theme 改爲 ayer</span><br><span class="line">theme: ayer</span><br></pre></td></tr></table></figure></li>
+<li><p>更新主題</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd themes&#x2F;ayer</span><br><span class="line">git pull</span><br></pre></td></tr></table></figure></li>
+<li><p>我有調整的主題設定<br>/theme/ayer/_config.yml</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">├── menu：</span><br><span class="line">|   ├── 簡體轉繁體</span><br><span class="line">|   └── #旅行       --用&#39;#&#39;注解掉不用的</span><br><span class="line">| </span><br><span class="line">├── subtitle:       --動效</span><br><span class="line">|   ├── text        --最多支持三段字</span><br><span class="line">|   ├── text2       </span><br><span class="line">|   └── text3</span><br><span class="line">| </span><br><span class="line">├── excerpt_link:閲讀更多  </span><br><span class="line">|            --截断按钮文字   </span><br><span class="line">|            --使用:MD文件内添加 &#39;&lt;!--more--&gt;&#39; 此行后在主頁不顯示</span><br><span class="line">| </span><br><span class="line">--分页文字，nav_text可以不動，我改了頁面編排改css 所以這裏得調整</span><br><span class="line">├── nav_text:       </span><br><span class="line">|   ├── page_prev: 上一頁</span><br><span class="line">|   ├── page_next: 下一頁</span><br><span class="line">|   ├── post_prev: 下一篇</span><br><span class="line">|   └── post_next: 上一篇</span><br><span class="line">| </span><br><span class="line">├── reward_type: 0  --關閉打賞</span><br><span class="line">| </span><br><span class="line">--檔案位置在 ayer&#x2F;source&#x2F;images 我都改成無關的圖檔，因爲懶得找node</span><br><span class="line">├── alipay: &#x2F;images&#x2F;alipay.jpg  </span><br><span class="line">├── weixin: &#x2F;images&#x2F;wechat.jpg  </span><br><span class="line">|</span><br><span class="line">--使用 gitalk 所以下面這樣設置</span><br><span class="line">├── leancloud: </span><br><span class="line">|   └── enable: false   </span><br><span class="line">├── valine: </span><br><span class="line">|   └── enable: false   </span><br><span class="line">--這建議先上GitHube之後再回來改</span><br><span class="line">├── gitalk: </span><br><span class="line">|   ├── enable: true</span><br><span class="line">|   ├── clientID:       # GitHub Application Client ID</span><br><span class="line">|   ├── clientSecret:   # Client Secret</span><br><span class="line">|   ├── repo:           # Repository name</span><br><span class="line">|   ├── owner:          # GitHub ID</span><br><span class="line">|   └── admin:          # GitHub ID   </span><br><span class="line">| </span><br><span class="line">├── github: </span><br><span class="line">|   └── enable: false   </span><br><span class="line">| </span><br><span class="line">├── cnzz: </span><br><span class="line">|   └── enable: false   </span><br><span class="line">| </span><br><span class="line">├── google_analytics:  # google統計申請好后填上給你的ID</span><br><span class="line">├── pageFooter: false</span><br><span class="line">└── icp:</span><br><span class="line">    └── enable: false  #備案鏈接 好像是隔壁鄰居的法令， 可以清掉</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>關於gitalk<br>去 Github &gt; Settings &gt; Developer settings &gt; Personal access tokens<br>按下 「Generate new token」，進入新增 token 頁面<br>填上 Note，捲到最下面，直接按下「Generate token」<br>成功之後，複製 token，先存好，之後就看不到了，這就是 access token 囉。</p>
+</blockquote>
+</li>
+<li><p>插件</p>
+</li>
+</ol>
+<ul>
+<li><p>hexo-generator-search 搜索   </p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd Blog</span><br><span class="line">npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure>
+<p>  /Blog/_config.yml 最下面添加</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#站内搜索</span><br><span class="line"># Hexo-generator-search</span><br><span class="line">search:</span><br><span class="line">path: search.xml</span><br><span class="line">field: post</span><br><span class="line">format: html</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>hexo-generate-feed RSS</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-feed --save</span><br></pre></td></tr></table></figure>
+<p>  /Blog/_config.yml 最下面添加</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#RSS 訂閲設置</span><br><span class="line">feed:</span><br><span class="line">  type: atom</span><br><span class="line">  path: atom.xml</span><br><span class="line">  limit: 20</span><br><span class="line">  hub:</span><br><span class="line">  content:</span><br><span class="line">  content_limit: 140</span><br><span class="line">  content_limit_delim: &#39; &#39;</span><br><span class="line">  order_by: -date</span><br></pre></td></tr></table></figure></li>
+<li><p>hexo-generator-index-pin-top</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm uninstall hexo-generator-index --save</span><br><span class="line">npm install hexo-generator-index-pin-top --save</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h1 id="Hexo-基本語句"><a href="#Hexo-基本語句" class="headerlink" title="Hexo 基本語句"></a>Hexo 基本語句</h1><ol>
+<li><code>hexo g</code>  生成靜態頁面<ul>
+<li><code>hexo g -d</code> 生成文章后立即部署 Blog/public</li>
+</ul>
+</li>
+<li><code>hexo s</code>  啓動hexo 服務 本地 <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a>  <ul>
+<li><code>hexo s -p 3000</code> 設置運作端口為3000  </li>
+<li><code>hexo s -g</code> 本地啓動前，先執行hexo g</li>
+</ul>
+</li>
+<li><code>hexo clean</code> 清理 Blog/public</li>
+</ol>
+<h3 id="参考资料："><a href="#参考资料：" class="headerlink" title="参考资料："></a>参考资料：</h3><ol>
+<li>ayer 主題 (<a href="https://zhuanlan.zhihu.com/p/98597931" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/98597931</a> )</li>
+<li>gitalk 設置(<a href="https://dwatow.github.io/2019/01-08-hexo/gitalk/" target="_blank" rel="noopener">https://dwatow.github.io/2019/01-08-hexo/gitalk/</a> )</li>
+<li>不蒜子統計(<a href="http://busuanzi.ibruce.info/" target="_blank" rel="noopener">http://busuanzi.ibruce.info/</a> )</li>
+<li>hexo搭建參考(<a href="https://pengloo53.gitbooks.io/hexo/content/chapter1/8.%20%E6%89%98%E7%AE%A1%E5%88%B0Github%E6%88%96Coding.html" target="_blank" rel="noopener">https://pengloo53.gitbooks.io/hexo/content/chapter1/8.%20%E6%89%98%E7%AE%A1%E5%88%B0Github%E6%88%96Coding.html</a>)</li>
+</ol>
+<h3 id="MarkDown書寫參考："><a href="#MarkDown書寫參考：" class="headerlink" title="MarkDown書寫參考："></a>MarkDown書寫參考：</h3><ol>
+<li><a href="https://www.jianshu.com/p/191d1e21f7ed" target="_blank" rel="noopener">https://www.jianshu.com/p/191d1e21f7ed</a></li>
+<li><a href="http://xianbai.me/learn-md/article/syntax/links.html" target="_blank" rel="noopener">http://xianbai.me/learn-md/article/syntax/links.html</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>GitHub</tag>
+        <tag>搭建個人Blog</tag>
+      </tags>
+  </entry>
 </search>

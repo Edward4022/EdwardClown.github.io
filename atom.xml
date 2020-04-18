@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://edwardclown.github.io/"/>
-  <updated>2020-04-17T08:41:41.665Z</updated>
+  <updated>2020-04-18T08:33:05.996Z</updated>
   <id>https://edwardclown.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hexo 部署筆記</title>
+    <link href="https://edwardclown.github.io/2020-04-18-Hexo-%E9%83%A8%E7%BD%B2%E7%AD%86%E8%A8%98.html"/>
+    <id>https://edwardclown.github.io/2020-04-18-Hexo-%E9%83%A8%E7%BD%B2%E7%AD%86%E8%A8%98.html</id>
+    <published>2020-04-18T06:34:08.000Z</published>
+    <updated>2020-04-18T08:33:05.996Z</updated>
+    
+    <summary type="html">
+    
+      搭建個人Blog的過程
+    
+    </summary>
+    
+    
+      <category term="Hexo" scheme="https://edwardclown.github.io/categories/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="https://edwardclown.github.io/tags/Hexo/"/>
+    
+      <category term="GitHub" scheme="https://edwardclown.github.io/tags/GitHub/"/>
+    
+      <category term="搭建個人Blog" scheme="https://edwardclown.github.io/tags/%E6%90%AD%E5%BB%BA%E5%80%8B%E4%BA%BABlog/"/>
+    
+  </entry>
   
   <entry>
     <title>Jenkins with .net Core .net Framework</title>
