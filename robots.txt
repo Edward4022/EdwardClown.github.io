@@ -5,7 +5,9 @@ Allow: /archives/
 Allow: /categories/
 Allow: /tags/
 Allow: /about/ 
-# Disallow: /js/
-# Disallow: /css/
-# Disallow: /fancybox/
+
+Disallow: /js/
+Disallow: /css/
+Disallow: /fancybox/
+
 Sitemap: https://edwardclown.github.io/sitemap.xml
