@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+
+<head>
+  <meta charset="utf-8" />
+   
+  <meta name="keywords" content="Jenkins,CI/CD,C#,.net Framework,技巧,整合,版控,臨淵羡魚,台灣,工程師,技術,程序員,程序猿,攻城獅,C#,.net,Framework,開發,學習" />
+   
+  <meta name="description" content="Jenkins 在 Windows Server 2012 上搭建時踩過的坑" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    Jenkins with .net Core .net Framework |  EdwardYu&#39;s Blog
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  
+  
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-163585158-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+
+  
+
+  <!--google Ad-->
+  <script data-ad-client="ca-pub-7625849383061287" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!--不蒜子計數-->
+  <!-- <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> -->
+  <!--Google Adsense-->
+  <script data-ad-client="pub-7625849383061287" async src="https://pagead2.googlesyndication
+  .com/pagead/js/adsbygoogle.js"></script>
+<link rel="alternate" href="/atom.xml" title="EdwardYu's Blog" type="application/atom+xml">
+</head>
+</html>
+
+<body>
+  <div id="app">
+    <main class="content on">
+      <section class="outer">
+  <article id="post-2020/04/Jenkins-with-net-Core-net-Framework" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Jenkins with .net Core .net Framework
+</h1>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020-04-17-2020/04/Jenkins-with-net-Core-net-Framework.html" class="article-date">
+  <time datetime="2020-04-17T07:28:51.000Z" itemprop="datePublished">2020-04-17</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%BE%8C%E7%AB%AF%E6%8A%80%E5%B7%A7/">後端技巧</a>
+  </div>
+
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">646</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">2 min</span>
+        </span>
+    </span>
+    
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        
+            
+<script src="/../js/busuanzi-2.3.pure.min.js"></script>
+
+            
+            <span>
+  <i>累計人氣:<span id="busuanzi_value_page_pv"></span></i>
+  &nbsp; | &nbsp;
+  <i>累計人次:<span id="busuanzi_value_site_uv"></span></i>
+</span>
+
+        
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <blockquote>
+<p>公司日漸壯大 部門協做上,運維部門上綫老是出問題<br>這篇算是一點小筆記，記錄點遇到的狀況，避免忘記<br>因爲是舊的筆記也要給大陸同事觀看，後面有留言反應的話會在找時間改</p>
+</blockquote>
+<h4 id="預計通過-Jenkins-達到以下流程"><a href="#預計通過-Jenkins-達到以下流程" class="headerlink" title="預計通過 Jenkins 達到以下流程"></a>預計通過 Jenkins 達到以下流程</h4><ol>
+<li>取得分支 Tag</li>
+<li>获取Git Tag 代码, 存在Jenkins\workspace</li>
+<li>编译代码</li>
+<li>FTP 同步执行档</li>
+</ol>
+<a id="more"></a>
+<h1 id="在Windows-Server2012-下操作"><a href="#在Windows-Server2012-下操作" class="headerlink" title="在Windows Server2012 下操作"></a>在Windows Server2012 下操作</h1><h2 id="Jenkins-服务器环境"><a href="#Jenkins-服务器环境" class="headerlink" title="Jenkins 服务器环境"></a>Jenkins 服务器环境</h2><p>参考：<a href="https://medium.com/@NorthBei/ci-1-%E5%9C%A8%E5%90%84%E5%B9%B3%E5%8F%B0%E4%B8%8A%E5%AE%89%E8%A3%9Djenkins-ea0f19cc0881" target="_blank" rel="noopener">https://medium.com/@NorthBei/ci-1-%E5%9C%A8%E5%90%84%E5%B9%B3%E5%8F%B0%E4%B8%8A%E5%AE%89%E8%A3%9Djenkins-ea0f19cc0881</a>    </p>
+<h2 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h2><ol>
+<li>先安装Git 环境 （需先下载Git 下载路径： <a href="https://git-scm.com/downloads）" target="_blank" rel="noopener">https://git-scm.com/downloads）</a></li>
+<li>安装Jenkins 插件  GitLab Plugin</li>
+<li>安装Jenkins 插件  Git Parameter Plug-in<br>（如果不用Git 控制项目发布（ex:Tag…）则不用安装）</li>
+<li>管理Jenkins -&gt; 设定系统</li>
+<li>添加 gitlab 连接设置， git 使用者 账号 密码<img src="../../../../images/Jenkins-with-net-Core-net-Framework/1.png" alt="" title="" width="400px"/>
+<img src="../../../../images/Jenkins-with-net-Core-net-Framework/2.png" alt="" title="" width="400px"/>
+
+</li>
+</ol>
+<h2 id="net-Core，FrameWork-编译环境设置"><a href="#net-Core，FrameWork-编译环境设置" class="headerlink" title=".net Core，FrameWork  编译环境设置"></a>.net Core，FrameWork  编译环境设置</h2><p>使用Visual Studio Install 安装 Visual Studio</p>
+<ol>
+<li>依照代码版本安装SDK<img src="../../../../images/Jenkins-with-net-Core-net-Framework/3.png" alt="" title="" width="400px"/></li>
+<li>设置MSBuild 路径（这边依照安装路径配置）<img src="../../../../images/Jenkins-with-net-Core-net-Framework/4.png" alt="" title="" width="400px"/>
+<img src="../../../../images/Jenkins-with-net-Core-net-Framework/5.png" alt="" title="" width="400px"/></li>
+<li>下载 dotnet-sdk (for .net Core 框架， 一样依照专案版本下载即可)</li>
+<li>下载Nuget.exe 下载路径：<a href="https://www.nuget.org/downloads" target="_blank" rel="noopener">https://www.nuget.org/downloads</a><br>C:\Users\Administrator\AppData\Roaming\NuGet<br>可配置私有nuget 库地址<img src="../../../../images/Jenkins-with-net-Core-net-Framework/6.png" alt="" title="" width="400px"/>
+
+</li>
+</ol>
+<h2 id="新增作业"><a href="#新增作业" class="headerlink" title="新增作业"></a>新增作业</h2><ol>
+<li><p>新增作业</p>
+<img src="../../../../images/Jenkins-with-net-Core-net-Framework/7.png" alt="" title="" width="400px"/></li>
+<li><p>设置作业名称</p>
+<img src="../../../../images/Jenkins-with-net-Core-net-Framework/8.png" alt="" title="" width="400px"/></li>
+<li><p>设置gitlab 路径，选择前面设置的git 连接</p>
+<img src="../../../../images/Jenkins-with-net-Core-net-Framework/9.png" alt="" title="" width="400px"/></li>
+<li><p>设置Build 参数， 若不需要可以不设置， 会以gitlab 分支最新更新</p>
+<img src="../../../../images/Jenkins-with-net-Core-net-Framework/10.png" alt="" title="" width="400px"/>
+<img src="../../../../images/Jenkins-with-net-Core-net-Framework/11.png" alt="" title="" width="400px"/></li>
+<li><p>若不需要Tag管理版本( ${Tag} 位置改填 */{分支名称} )</p>
+<img src="../../../../images/Jenkins-with-net-Core-net-Framework/12.png" alt="" title="" width="400px"/>
+</li>
+<li><p>更新项目内Nuget 类库 “{nuget.exe实体路径}” restore {项目}.sln</p>
+<img src="../../../../images/Jenkins-with-net-Core-net-Framework/13.png" alt="" title="" width="400px"/>
+<img src="../../../../images/Jenkins-with-net-Core-net-Framework/14.png" alt="" title="" width="400px"/>
+</li>
+<li><p>配置项目<br>command line 参数  </p>
+<pre><code>/m  {项目名}.sln /t:Rebuild /p:Configuration=Release /p:DeployOnBuild=true</code></pre><img src="../../../../images/Jenkins-with-net-Core-net-Framework/15.png" alt="" title="" width="400px"/>  
+另外， .net Core MsBuild command line 文档太简单，这边就不寫了，直接使用 dotnet cmd 编译   
+<img src="../../../../images/Jenkins-with-net-Core-net-Framework/16.png" alt="" title="" width="400px"/>  
+ dotnet publish -c Release -r win10-x64 --self-contained true  
+
+</li>
+</ol>
+<blockquote>
+<p>-r “win10-x64” (运行环境，ex: linux-x64)<br>–self-contained （true/false： 是否独立发布）</p>
+</blockquote>
+<ol start="8">
+<li>Save</li>
+</ol>
+<h2 id="FTP-同步服务器"><a href="#FTP-同步服务器" class="headerlink" title="FTP 同步服务器"></a>FTP 同步服务器</h2><ol>
+<li><p>安装Jenkins 插件  Publish Over FTP</p>
+<img src="../../../../images/Jenkins-with-net-Core-net-Framework/17.png" alt="" title="" width="400px"/>
+</li>
+<li><p>FTP 设置， 不多说上图</p>
+<img src="../../../../images/Jenkins-with-net-Core-net-Framework/18.png" alt="" title="" width="400px"/>
+<img src="../../../../images/Jenkins-with-net-Core-net-Framework/19.png" alt="" title="" width="400px"/>
+</li>
+<li><p>iis 占用文件会造成，FTP 上传失败， 这边是这样解决的。<br>利用远程方式先关闭iis 站点， 记得先测试远端服务器是否有开启远端控制选项<br>下载微软远程控制插件<br><a href="https://docs.microsoft.com/en-us/sysinternals/downloads/psexec" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/sysinternals/downloads/psexec</a>                </p>
+</li>
+</ol>
+<img src="../../../../images/Jenkins-with-net-Core-net-Framework/19.png" alt="" title="" width="400px"/>
+
+<p>解压缩后档案实体位置<br>ex:C:\PSTools\PsExec<br>C:\PSTools\PsExec \192.168.10.xxx -u administrator -p xxx<br>c:\windows\system32\inetsrv\AppCmd.exe stop apppool /apppool.name:”{apppool名称}”<br>C:\PSTools\PsExec \192.168.10.xxx -u administrator -p xxx<br>C:\windows\system32\inetsrv\AppCmd.exe stop site /site.name:”{站点名称}”<br>（stop/start/restart）</p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>Copyright： </strong>
+              Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://edwardclown.github.io/2020-04-17-2020/04/Jenkins-with-net-Core-net-Framework.html" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CI-CD/" rel="tag">CI/CD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jenkins/" rel="tag">Jenkins</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Learn/" rel="tag">Learn</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B4%E5%90%88%E7%AE%A1%E7%90%86/" rel="tag">整合管理</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2020-04-18-2020/04/Hexo-%E9%83%A8%E7%BD%B2%E7%AD%86%E8%A8%98.html" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">
+          
+            Hexo 部署筆記
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020-04-16-2020/04/Exceptionless-In-WinServer2012-Azure.html" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">Exceptionless In WinServer2012(Azure)</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+
+  
+  
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.css">
+
+
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: '3a79c70cbe347b4c0a4e',
+    clientSecret: '69c732cd722b9741465557954385acab8a6e8de5',
+    repo: 'edwardclown.github.io',
+    owner: 'EdwardClown',
+    admin: ['EdwardClown'],
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: false,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2015-2020
+        Edward Yu
+      </li>
+      <li>
+        
+      </li>
+    </ul>
+    <ul class="list-inline">
+      <!-- <li>
+        
+        
+        <span>
+  <i>累計人氣:<span id="busuanzi_value_page_pv"></span></i>
+  &nbsp; | &nbsp;
+  <i>累計人次:<span id="busuanzi_value_site_uv"></span></i>
+</span>
+
+        
+      </li>
+      
+      <li> -->
+        <!-- cnzz统计 -->
+        <!-- 
+      </li> -->
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="EdwardYu&#39;s Blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主頁</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">歸檔</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分類</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">標簽</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">關于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li  class="nav-item">
+      <a class="nav-item-link"><i style="font-size:12px">總訪問量:</br><span id="busuanzi_value_site_pv"></span></i></a>
+    </li>
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['與其臨淵羡魚，不如退而結網', '若不給自己設限，則人生中就沒有限制的藩籬', '別想一下造出大海，必須先由小河川開始'],
+      startDelay: 0,
+      typeSpeed: 200,
+      loop: true,
+      backSpeed: 100,
+      showCursor: true
+    });
+  } catch (err) {
+  }
+
+</script>
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+
+
+<!-- 复制 -->
+
+  
+<link rel="stylesheet" href="/css/clipboard.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+
+    
+  </div>
+</body>
+
+</html>
