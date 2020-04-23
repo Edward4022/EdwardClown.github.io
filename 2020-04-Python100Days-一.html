@@ -7,14 +7,14 @@
 <head>
   <meta charset="utf-8" />
    
-  <meta name="keywords" content="Jenkins,CI/CD,C#,.net Framework,技巧,整合,版控,臨淵羡魚,台灣,工程師,技術,程序員,程序猿,攻城獅,C#,.net,Framework,開發,學習" />
+  <meta name="keywords" content="臨淵羡魚,台灣,工程師,技術,程序員,程序猿,攻城獅,C#,.net,Framework,開發,學習" />
    
-  <meta name="description" content="Jenkins 在 Windows Server 2012 上搭建時踩過的坑" />
+  <meta name="description" content="Python-100-days學習筆記" />
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    Jenkins with .net Core .net Framework |  EdwardYu&#39;s Blog
-  </title>
+    Python100Daysf筆記(一) |  EdwardYu&#39;s Blog
+  </title><meta name="robots" content="noindex">
   <meta name="generator" content="hexo-theme-yilia-plus">
   
   <link rel="shortcut icon" href="/favicon.ico" />
@@ -60,7 +60,7 @@ ga('send', 'pageview');
   <div id="app">
     <main class="content on">
       <section class="outer">
-  <article id="post-2020/04/Jenkins-with-net-Core-net-Framework" class="article article-type-post" itemscope
+  <article id="post-2020-04-Python100Days-一" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -68,7 +68,7 @@ ga('send', 'pageview');
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Jenkins with .net Core .net Framework
+  Python100Daysf筆記(一)
 </h1>
  
 
@@ -77,12 +77,12 @@ ga('send', 'pageview');
 
     
     <div class="article-meta">
-      <a href="/2020-04-17-2020/04/Jenkins-with-net-Core-net-Framework.html" class="article-date">
-  <time datetime="2020-04-17T07:28:51.000Z" itemprop="datePublished">2020-04-17</time>
+      <a href="/2020-04-Python100Days-%E4%B8%80.html" class="article-date">
+  <time datetime="2020-04-20T12:53:56.000Z" itemprop="datePublished">2020-04-20</time>
 </a>
       
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%BE%8C%E7%AB%AF%E6%8A%80%E5%B7%A7/">後端技巧</a>
+    
   </div>
 
       
@@ -92,7 +92,7 @@ ga('send', 'pageview');
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">646</span>
+            <span class="post-count">388</span>
         </span>
     </span>
 
@@ -101,7 +101,7 @@ ga('send', 'pageview');
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">2 min</span>
+            <span class="post-count">1 min</span>
         </span>
     </span>
     
@@ -142,83 +142,114 @@ ga('send', 'pageview');
       
 
       
-      <blockquote>
-<p>公司日漸壯大 部門協做上,運維部門上綫老是出問題<br>這篇算是一點小筆記，記錄點遇到的狀況，避免忘記<br>因爲是舊的筆記也要給大陸同事觀看，後面有留言反應的話會在找時間改</p>
-</blockquote>
-<h4 id="預計通過-Jenkins-達到以下流程"><a href="#預計通過-Jenkins-達到以下流程" class="headerlink" title="預計通過 Jenkins 達到以下流程"></a>預計通過 Jenkins 達到以下流程</h4><ol>
-<li>取得分支 Tag</li>
-<li>获取Git Tag 代码, 存在Jenkins\workspace</li>
-<li>编译代码</li>
-<li>FTP 同步执行档</li>
-</ol>
-<a id="more"></a>
-<h1 id="在Windows-Server2012-下操作"><a href="#在Windows-Server2012-下操作" class="headerlink" title="在Windows Server2012 下操作"></a>在Windows Server2012 下操作</h1><h2 id="Jenkins-服务器环境"><a href="#Jenkins-服务器环境" class="headerlink" title="Jenkins 服务器环境"></a>Jenkins 服务器环境</h2><p>参考：<a href="https://medium.com/@NorthBei/ci-1-%E5%9C%A8%E5%90%84%E5%B9%B3%E5%8F%B0%E4%B8%8A%E5%AE%89%E8%A3%9Djenkins-ea0f19cc0881" target="_blank" rel="noopener">https://medium.com/@NorthBei/ci-1-%E5%9C%A8%E5%90%84%E5%B9%B3%E5%8F%B0%E4%B8%8A%E5%AE%89%E8%A3%9Djenkins-ea0f19cc0881</a>    </p>
-<h2 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h2><ol>
-<li>先安装Git 环境 （需先下载Git 下载路径： <a href="https://git-scm.com/downloads）" target="_blank" rel="noopener">https://git-scm.com/downloads）</a></li>
-<li>安装Jenkins 插件  GitLab Plugin</li>
-<li>安装Jenkins 插件  Git Parameter Plug-in<br>（如果不用Git 控制项目发布（ex:Tag…）则不用安装）</li>
-<li>管理Jenkins -&gt; 设定系统</li>
-<li>添加 gitlab 连接设置， git 使用者 账号 密码<img src="../../../../images/Jenkins-with-net-Core-net-Framework/1.png" alt="" title="" width="400px"/>
-<img src="../../../../images/Jenkins-with-net-Core-net-Framework/2.png" alt="" title="" width="400px"/>
-
+      <h1 id="初識Python"><a href="#初識Python" class="headerlink" title="初識Python"></a>初識Python</h1><h2 id="python"><a href="#python" class="headerlink" title="python"></a>python</h2><p><strong>優點/特性</strong>  </p>
+<ul>
+<li>解釋型語言  </li>
+<li>Open Source  </li>
+<li>社區强大，生態優良  </li>
+<li>數據分析及機器學習領域表現優秀  </li>
+</ul>
+<p><strong>缺點</strong>  </p>
+<ul>
+<li>執行效率低  </li>
+<li>程式無法加密  </li>
+<li>框架過多  </li>
+</ul>
+<p>(安裝/運行)</p>
+<p><strong>練習 ：turtle 畫圖？</strong></p>
+<h2 id="類型"><a href="#類型" class="headerlink" title="類型"></a>類型</h2><ol>
+<li><p>變數  </p>
+<table>
+<thead>
+<tr>
+<th align="left">類型</th>
+<th align="center">宣告</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">整數</td>
+<td align="center">int()</td>
+</tr>
+<tr>
+<td align="left">字串</td>
+<td align="center">str()</td>
+</tr>
+<tr>
+<td align="left">布林值</td>
+<td align="center">bool()</td>
+</tr>
+<tr>
+<td align="left">運算式(?)</td>
+<td align="center"><code>半徑 = 10</code><br><code>PI = 3.14159</code><br><code>圓周長 = 2 * PI * 半徑</code><br><code>print(圓周長)</code><br><code>&gt;62.8318</code></td>
+</tr>
+</tbody></table>
 </li>
-</ol>
-<h2 id="net-Core，FrameWork-编译环境设置"><a href="#net-Core，FrameWork-编译环境设置" class="headerlink" title=".net Core，FrameWork  编译环境设置"></a>.net Core，FrameWork  编译环境设置</h2><p>使用Visual Studio Install 安装 Visual Studio</p>
+<li><p>命名規則</p>
 <ol>
-<li>依照代码版本安装SDK<img src="../../../../images/Jenkins-with-net-Core-net-Framework/3.png" alt="" title="" width="400px"/></li>
-<li>设置MSBuild 路径（这边依照安装路径配置）<img src="../../../../images/Jenkins-with-net-Core-net-Framework/4.png" alt="" title="" width="400px"/>
-<img src="../../../../images/Jenkins-with-net-Core-net-Framework/5.png" alt="" title="" width="400px"/></li>
-<li>下载 dotnet-sdk (for .net Core 框架， 一样依照专案版本下载即可)</li>
-<li>下载Nuget.exe 下载路径：<a href="https://www.nuget.org/downloads" target="_blank" rel="noopener">https://www.nuget.org/downloads</a><br>C:\Users\Administrator\AppData\Roaming\NuGet<br>可配置私有nuget 库地址<img src="../../../../images/Jenkins-with-net-Core-net-Framework/6.png" alt="" title="" width="400px"/>
-
+<li>硬性规则：<ul>
+<li>變數的第一個字母一定只能是英文大小寫字母、Unicode字元或底線(<em>)，其後可以接英文大小寫字母、Unicode字元、底線(</em>)或數字</li>
+<li>對大小寫敏感</li>
+<li>關鍵字&amp;保留字不能使用</li>
+</ul>
+</li>
+<li>PEP 8要求：<ul>
+<li>多單詞用底綫連接</li>
+<li>protect 單底線(_) 開頭</li>
+<li>private 雙底線(_) 開頭</li>
+</ul>
 </li>
 </ol>
-<h2 id="新增作业"><a href="#新增作业" class="headerlink" title="新增作业"></a>新增作业</h2><ol>
-<li><p>新增作业</p>
-<img src="../../../../images/Jenkins-with-net-Core-net-Framework/7.png" alt="" title="" width="400px"/></li>
-<li><p>设置作业名称</p>
-<img src="../../../../images/Jenkins-with-net-Core-net-Framework/8.png" alt="" title="" width="400px"/></li>
-<li><p>设置gitlab 路径，选择前面设置的git 连接</p>
-<img src="../../../../images/Jenkins-with-net-Core-net-Framework/9.png" alt="" title="" width="400px"/></li>
-<li><p>设置Build 参数， 若不需要可以不设置， 会以gitlab 分支最新更新</p>
-<img src="../../../../images/Jenkins-with-net-Core-net-Framework/10.png" alt="" title="" width="400px"/>
-<img src="../../../../images/Jenkins-with-net-Core-net-Framework/11.png" alt="" title="" width="400px"/></li>
-<li><p>若不需要Tag管理版本( ${Tag} 位置改填 */{分支名称} )</p>
-<img src="../../../../images/Jenkins-with-net-Core-net-Framework/12.png" alt="" title="" width="400px"/>
 </li>
-<li><p>更新项目内Nuget 类库 “{nuget.exe实体路径}” restore {项目}.sln</p>
-<img src="../../../../images/Jenkins-with-net-Core-net-Framework/13.png" alt="" title="" width="400px"/>
-<img src="../../../../images/Jenkins-with-net-Core-net-Framework/14.png" alt="" title="" width="400px"/>
+<li><p>變量使用</p>
+<ol>
+<li><p> #print<br> a = 321<br> b = 12<br> print(a + b) # 333<br> print(a - b) # 309<br> print(a * b) # 3852<br> print(a / b) # 26.75</p>
 </li>
-<li><p>配置项目<br>command line 参数  </p>
-<pre><code>/m  {项目名}.sln /t:Rebuild /p:Configuration=Release /p:DeployOnBuild=true</code></pre><img src="../../../../images/Jenkins-with-net-Core-net-Framework/15.png" alt="" title="" width="400px"/>  
-另外， .net Core MsBuild command line 文档太简单，这边就不寫了，直接使用 dotnet cmd 编译   
-<img src="../../../../images/Jenkins-with-net-Core-net-Framework/16.png" alt="" title="" width="400px"/>  
- dotnet publish -c Release -r win10-x64 --self-contained true  
-
+<li><p> #類型<br> a = 100<br> b = 12.345<br> c = 1 + 5j<br> d = ‘hello, world’<br> e = True<br> print(type(a)) # &lt;class ‘int’&gt;<br> print(type(b)) # &lt;class ‘float’&gt;<br> print(type(c)) # &lt;class ‘complex’&gt;<br> print(type(d)) # &lt;class ‘str’&gt;<br> print(type(e)) # &lt;class ‘bool’&gt;</p>
+</li>
+<li><p> #型別轉換 &amp; 佔位符<br> a = int(input(‘a = ‘))<br> b = int(input(‘b = ‘))<br> print(‘%d + %d = %d’ % (a, b, a + b))<br> print(‘%d - %d = %d’ % (a, b, a - b))<br> print(‘%d * %d = %d’ % (a, b, a * b))<br> print(‘%d / %d = %f’ % (a, b, a / b))<br> print(‘%d // %d = %d’ % (a, b, a // b))<br> print(‘%d %% %d = %d’ % (a, b, a % b))<br> print(‘%d ** %d = %d’ % (a, b, a ** b))  </p>
 </li>
 </ol>
-<blockquote>
-<p>-r “win10-x64” (运行环境，ex: linux-x64)<br>–self-contained （true/false： 是否独立发布）</p>
-</blockquote>
-<ol start="8">
-<li>Save</li>
+</li>
+<li><p>運算符</p>
+<table>
+<thead>
+<tr>
+<th align="left">运算符</th>
+<th align="center">描述</th>
+<th align="left">舉例</th>
+<th align="center">結果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">+</td>
+<td align="center">加</td>
+<td align="left"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">:—</td>
+<td align="center">:—:</td>
+<td align="left">:—</td>
+<td align="center">:—:</td>
+</tr>
+<tr>
+<td align="left">[] [:]</td>
+<td align="center">下标，切片</td>
+<td align="left"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">字串</td>
+<td align="center">str()</td>
+<td align="left"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+</li>
 </ol>
-<h2 id="FTP-同步服务器"><a href="#FTP-同步服务器" class="headerlink" title="FTP 同步服务器"></a>FTP 同步服务器</h2><ol>
-<li><p>安装Jenkins 插件  Publish Over FTP</p>
-<img src="../../../../images/Jenkins-with-net-Core-net-Framework/17.png" alt="" title="" width="400px"/>
-</li>
-<li><p>FTP 设置， 不多说上图</p>
-<img src="../../../../images/Jenkins-with-net-Core-net-Framework/18.png" alt="" title="" width="400px"/>
-<img src="../../../../images/Jenkins-with-net-Core-net-Framework/19.png" alt="" title="" width="400px"/>
-</li>
-<li><p>iis 占用文件会造成，FTP 上传失败， 这边是这样解决的。<br>利用远程方式先关闭iis 站点， 记得先测试远端服务器是否有开启远端控制选项<br>下载微软远程控制插件<br><a href="https://docs.microsoft.com/en-us/sysinternals/downloads/psexec" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/sysinternals/downloads/psexec</a>                </p>
-</li>
-</ol>
-<img src="../../../../images/Jenkins-with-net-Core-net-Framework/19.png" alt="" title="" width="400px"/>
-
-<p>解压缩后档案实体位置<br>ex:C:\PSTools\PsExec<br>C:\PSTools\PsExec \192.168.10.xxx -u administrator -p xxx<br>c:\windows\system32\inetsrv\AppCmd.exe stop apppool /apppool.name:”{apppool名称}”<br>C:\PSTools\PsExec \192.168.10.xxx -u administrator -p xxx<br>C:\windows\system32\inetsrv\AppCmd.exe stop site /site.name:”{站点名称}”<br>（stop/start/restart）</p>
-
+<p>Q:<br>    1.<br>import turtle 和 from turtle import * 的區別？</p>
+<p>.article-entry ul li{margin:0 0 0 40px}</p>
+<!-- flag of hidden posts -->
       
       <!-- reward -->
       
@@ -282,14 +313,14 @@ ga('send', 'pageview');
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://edwardclown.github.io/2020-04-17-2020/04/Jenkins-with-net-Core-net-Framework.html" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://edwardclown.github.io/2020-04-Python100Days-%E4%B8%80.html" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CI-CD/" rel="tag">CI/CD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jenkins/" rel="tag">Jenkins</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Learn/" rel="tag">Learn</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B4%E5%90%88%E7%AE%A1%E7%90%86/" rel="tag">整合管理</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"></ul>
 
 
     </footer>
@@ -298,25 +329,6 @@ ga('send', 'pageview');
 
   
   
-  <nav class="article-nav">
-    
-      <a href="/2020-04-18-2020/04/Hexo-%E9%83%A8%E7%BD%B2%E7%AD%86%E8%A8%98.html" class="article-nav-link">
-        <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">
-          
-            Hexo 部署筆記
-          
-        </div>
-      </a>
-    
-    
-      <a href="/2020-04-16-2020/04/Exceptionless-In-WinServer2012-Azure.html" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">Exceptionless In WinServer2012(Azure)</div>
-      </a>
-    
-  </nav>
-
 
   
 
