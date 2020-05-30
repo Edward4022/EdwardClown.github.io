@@ -425,10 +425,12 @@
 </ol>
 ]]></content>
       <categories>
-        <category>-Python</category>
+        <category>Python</category>
       </categories>
       <tags>
-        <tag>-Python -Learn -爬蟲</tag>
+        <tag>Learn</tag>
+        <tag>Python</tag>
+        <tag>爬蟲</tag>
       </tags>
   </entry>
 </search>
