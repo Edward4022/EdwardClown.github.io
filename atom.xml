@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://edwardclown.github.io/"/>
-  <updated>2020-04-23T13:35:22.497Z</updated>
+  <updated>2020-05-30T06:20:21.584Z</updated>
   <id>https://edwardclown.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>第一個簡單python爬蟲</title>
+    <link href="https://edwardclown.github.io/2020-05-30-%E7%AC%AC%E4%B8%80%E5%80%8B%E7%B0%A1%E5%96%AEpython%E7%88%AC%E8%9F%B2.html"/>
+    <id>https://edwardclown.github.io/2020-05-30-%E7%AC%AC%E4%B8%80%E5%80%8B%E7%B0%A1%E5%96%AEpython%E7%88%AC%E8%9F%B2.html</id>
+    <published>2020-05-30T05:21:00.000Z</published>
+    <updated>2020-05-30T06:20:21.584Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;一直沒有時間能夠好好學習Python，直到最近。。。&lt;br&gt;不過這文，完全是還沒好好學過就寫了，因爲老婆的公司技術不給力&lt;br&gt;給報表功能卻沒有導出的功能，所以我就越俎代庖下咯&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;需求&quot;&gt;&lt;a href=&quot;#需求&quot; class=&quot;headerlink&quot; title=&quot;需求&quot;&gt;&lt;/a&gt;需求&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;内部網站上的報表頁面上的數據拉取&lt;/li&gt;
+&lt;li&gt;轉成 execl檔案&lt;/li&gt;
+&lt;li&gt;保留一定程度的擴展（畢竟後續有問題的報表肯定不止一個）&lt;/li&gt;
+&lt;li&gt;可直接執行&lt;/li&gt;
+&lt;/ol&gt;
+    
+    </summary>
+    
+    
+      <category term="-Python" scheme="https://edwardclown.github.io/categories/Python/"/>
+    
+    
+      <category term="-Python -Learn -爬蟲" scheme="https://edwardclown.github.io/tags/Python-Learn-%E7%88%AC%E8%9F%B2/"/>
+    
+  </entry>
   
   <entry>
     <title>Hexo 部署筆記</title>

@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+
+<head>
+  <meta charset="utf-8" />
+   
+  <meta name="keywords" content="-Python -Spider -爬蟲 -0Pyhton基礎,臨淵羡魚,台灣,工程師,技術,程序員,程序猿,攻城獅,C#,.net,Framework,開發,學習" />
+   
+  <meta name="description" content="這是我學習筆記及生活分享的Blog" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    第一個簡單python爬蟲 |  EdwardYu&#39;s Blog
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  
+  
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-163585158-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+
+  
+
+  <!--google Ad-->
+  <script data-ad-client="ca-pub-7625849383061287" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!--不蒜子計數-->
+  <!-- <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> -->
+  <!--Google Adsense-->
+  <script data-ad-client="pub-7625849383061287" async src="https://pagead2.googlesyndication
+  .com/pagead/js/adsbygoogle.js"></script>
+<link rel="alternate" href="/atom.xml" title="EdwardYu's Blog" type="application/atom+xml">
+</head>
+</html>
+
+<body>
+  <div id="app">
+    <main class="content on">
+      <section class="outer">
+  <article id="post-2020-05-30-第一個簡單python爬蟲" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  第一個簡單python爬蟲
+</h1>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020-05-30-%E7%AC%AC%E4%B8%80%E5%80%8B%E7%B0%A1%E5%96%AEpython%E7%88%AC%E8%9F%B2.html" class="article-date">
+  <time datetime="2020-05-30T05:21:00.000Z" itemprop="datePublished">2020-05-30</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Python/">-Python</a>
+  </div>
+
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">1.9k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">9 min</span>
+        </span>
+    </span>
+    
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        
+            
+<script src="/../js/busuanzi-2.3.pure.min.js"></script>
+
+            
+            <span>
+  <i>累計人氣:<span id="busuanzi_value_page_pv"></span></i>
+  &nbsp; | &nbsp;
+  <i>累計人次:<span id="busuanzi_value_site_uv"></span></i>
+</span>
+
+        
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <blockquote>
+<p>一直沒有時間能夠好好學習Python，直到最近。。。<br>不過這文，完全是還沒好好學過就寫了，因爲老婆的公司技術不給力<br>給報表功能卻沒有導出的功能，所以我就越俎代庖下咯</p>
+</blockquote>
+<h1 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h1><ol>
+<li>内部網站上的報表頁面上的數據拉取</li>
+<li>轉成 execl檔案</li>
+<li>保留一定程度的擴展（畢竟後續有問題的報表肯定不止一個）</li>
+<li>可直接執行</li>
+</ol>
+<a id="more"></a>
+
+<h1 id="過程"><a href="#過程" class="headerlink" title="過程"></a>過程</h1><h2 id="難點一"><a href="#難點一" class="headerlink" title="難點一"></a>難點一</h2><p>需要先找到報表功能的規律，包含Post請求内容的變化，及測試</p>
+<blockquote>
+<p>這部分有資料問題就不提供了</p>
+</blockquote>
+<ol>
+<li>先觀察報表欄位，幸好欄位並不變</li>
+<li>再找到分頁參數</li>
+<li>分別嘗試提出非前端頁面提供的數值(Ex: perPage=10000&amp;page=1 )</li>
+<li>將規則記錄下來，後續在程式中測試</li>
+</ol>
+<h2 id="難點二"><a href="#難點二" class="headerlink" title="難點二"></a>難點二</h2><p>驗證碼無法自動登入</p>
+<blockquote>
+<p>這個真不好解決，畢竟之後老婆可能會帶去公司用，<br>如果登入的驗證碼都讓程式給突破了，怕給他們公司技術帶來麻煩，<br>所以后面讓老婆用chrome登入</p>
+</blockquote>
+<h2 id="難點三"><a href="#難點三" class="headerlink" title="難點三"></a>難點三</h2><p>取得登入的憑證</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#引用的 browser_cookie3 </span><br><span class="line">import browser_cookie3 as browser_cookie</span><br><span class="line"></span><br><span class="line">#chrome的設置會依照使用者不同而將cookie 存入不同的位置</span><br><span class="line">array &#x3D; os.listdir(path + &quot;\..\\Local\\Google\\Chrome\\User Data&quot;)  </span><br><span class="line">matching &#x3D; [s for s in array if &quot;Profile &quot; in s ]  </span><br><span class="line">matching +&#x3D; [s for s in array if &quot;Default&quot; in s]  </span><br><span class="line"></span><br><span class="line">profile &#x3D; input(&quot;請輸入登入的profile(登入位置Browser 打 chrome:&#x2F;&#x2F;version 中的个人资料路径):&quot;)</span><br><span class="line"></span><br><span class="line">baseCookiePath &#x3D; path + &quot;\..\Local\\Google\\Chrome\\User Data\\&#123;profile&#125;\\Cookies&quot;</span><br><span class="line">cookiePath &#x3D; baseCookiePath.format(profile&#x3D;profile)</span><br><span class="line">cookies &#x3D; browser_cookie.chrome(domain_name&#x3D;&#39;&#123;DomainName&#125;&#39;, cookie_file&#x3D;cookiePath)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>這裏應該算是運氣好，他們的站點還是用比較基本的方式驗證，所以取得Cookie 裏面的 loginUser 參數就可以了</p>
+</blockquote>
+<h2 id="難點四"><a href="#難點四" class="headerlink" title="難點四"></a>難點四</h2><p>站點要使用網絡代理驗證才能進入  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 這邊引用的 requests </span><br><span class="line">import requests as rq</span><br><span class="line"># 設置網絡代理</span><br><span class="line">proxies &#x3D; &#123;</span><br><span class="line">    &quot;http&quot;: &quot;http:&#x2F;&#x2F;&#123;用戶名&#125;:&#123;密碼&#125;@&#123;代理服務器&#125;:&#123;Port號&#125;&quot;,  </span><br><span class="line">    &quot;https&quot;: &quot;http:&#x2F;&#x2F;&#123;用戶名&#125;:&#123;密碼&#125;@&#123;代理服務器&#125;:&#123;Port號&#125;&quot;</span><br><span class="line">&#125;</span><br><span class="line">#在get請求中帶入proxies參數</span><br><span class="line">rq.get(url, cookies&#x3D;rq.utils.dict_from_cookiejar(cookies), proxies&#x3D;proxies)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>這邊有個陰險的地方，花了我一點時間，從chrome裏面拿出來的cookies是cookiejar 的格式，需要經過format轉成請求的cookie</p>
+</blockquote>
+<h1 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h1><p>最後通過PyInstaller 將pyhton編成exe就結束啦</p>
+<p>後面的困難度就相對低了，不多説啦，上代碼</p>
+<blockquote>
+<p>#透過pip安裝pyinstaller<br>pip install pyinstaller<br>#如果失敗可以使用以下的方法進行安裝<br>pip install <a href="https://github.com/pyinstaller/pyinstaller/archive/develop.tar.gz" target="_blank" rel="noopener">https://github.com/pyinstaller/pyinstaller/archive/develop.tar.gz</a><br>#目前可支援Python 2.7 and 3.3—3.6<br>pyinstaller -F ./hello.py</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br></pre></td><td class="code"><pre><span class="line"># coding:utf-8</span><br><span class="line"></span><br><span class="line">import  glob,os, sys</span><br><span class="line">from datetime import datetime</span><br><span class="line"></span><br><span class="line">import browser_cookie3 as browser_cookie</span><br><span class="line">import pandas as pd</span><br><span class="line">import requests as rq</span><br><span class="line">from bs4 import BeautifulSoup</span><br><span class="line">from dateutil.relativedelta import relativedelta</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class Info:  </span><br><span class="line">    def __init__(self, userName, addAmount, balance, type, agent, date, billNo):</span><br><span class="line">    self.userName &#x3D; userName</span><br><span class="line">    self.addAmount &#x3D; addAmount</span><br><span class="line">    self.balance &#x3D; balance</span><br><span class="line">    self.type &#x3D; type</span><br><span class="line">    self.agent &#x3D; agent</span><br><span class="line">    self.date &#x3D; date</span><br><span class="line">    self.billNo &#x3D; billNo</span><br><span class="line"></span><br><span class="line">def case(i):</span><br><span class="line">    switcher &#x3D; &#123;</span><br><span class="line">        1: &#39;aaa&#39;,</span><br><span class="line">        2: &#39;bbb&#39;,</span><br><span class="line">    &#125;</span><br><span class="line">    return switcher.get(i, &quot;Invalid&quot;)</span><br><span class="line"></span><br><span class="line">def domain(i):</span><br><span class="line">    switcher &#x3D; &#123;</span><br><span class="line">        &#39;h&#39;: &#39;bbb.aaa.com&#39;,</span><br><span class="line">        &#39;b&#39;: &#39;ccc.aaa.com&#39;</span><br><span class="line">    &#125;</span><br><span class="line">    return switcher.get(i, &quot;Invalid&quot;)</span><br><span class="line"></span><br><span class="line">uList &#x3D; []</span><br><span class="line">dateInput &#x3D; &quot;&quot;</span><br><span class="line">do &#x3D; &quot;&quot;</span><br><span class="line">sid &#x3D; &quot;&quot;</span><br><span class="line">requestType &#x3D; &quot;&quot;</span><br><span class="line">name &#x3D; &quot;&quot;</span><br><span class="line"></span><br><span class="line">try:</span><br><span class="line">	#取得AppData路徑</span><br><span class="line">    path &#x3D; os.getenv(&#39;APPDATA&#39;)</span><br><span class="line">    array &#x3D; os.listdir(path + &quot;\..\\Local\\Google\\Chrome\\User Data&quot;)</span><br><span class="line">	</span><br><span class="line">	#文件夾中查找 chrome 使用者資料 登入位置Browser 打 chrome:&#x2F;&#x2F;version 个人资料路径	</span><br><span class="line">    matching &#x3D; [s for s in array if &quot;Profile &quot; in s ]</span><br><span class="line">    matching +&#x3D; [s for s in array if &quot;Default&quot; in s]</span><br><span class="line">    for m in matching:</span><br><span class="line">        print(m)</span><br><span class="line">	</span><br><span class="line">	#profile必填</span><br><span class="line">    profile &#x3D; input(&quot;請輸入登入的profile(登入位置Browser 打 chrome:&#x2F;&#x2F;version 中的个人资料路径):&quot;)</span><br><span class="line">    while(profile not in matching):</span><br><span class="line">        profile &#x3D; input(&quot;輸入錯誤&#39;&quot;+profile+&quot;&#39;請重新輸入:&quot;)</span><br><span class="line"></span><br><span class="line">	#chrome 使用者 cookie 資料位置</span><br><span class="line">    baseCookiePath &#x3D; path + &quot;\..\Local\\Google\\Chrome\\User Data\\&#123;profile&#125;\\Cookies&quot;</span><br><span class="line">    cookiePath &#x3D; baseCookiePath.format(profile&#x3D;profile)</span><br><span class="line">    cookies &#x3D; browser_cookie.chrome(domain_name&#x3D;&#39;.aaa.com&#39;, cookie_file&#x3D;cookiePath)</span><br><span class="line"></span><br><span class="line">	#確認是否登入, 此站點登入后有3個cookie</span><br><span class="line">    while(len(cookies) &lt; 2):</span><br><span class="line">        print(&quot;在&#39;&quot;+ profile +&quot;&#39;中找不到cookie 請 重新輸入 或 確認登入 profile&quot;)</span><br><span class="line">        for m in matching:</span><br><span class="line">            print(m)</span><br><span class="line">        profile &#x3D; input(&quot;請輸入登入的profile:&quot;)</span><br><span class="line">        while(profile not in matching):</span><br><span class="line">            profile &#x3D; input(&quot;輸入錯誤&#39;&quot;+profile+&quot;&#39;請重新輸入:&quot;)</span><br><span class="line">        baseCookiePath &#x3D; path + &quot;\..\Local\\Google\\Chrome\\User Data\\&#123;profile&#125;\\Cookies&quot;</span><br><span class="line">        cookiePath &#x3D; baseCookiePath.format(profile&#x3D;profile)</span><br><span class="line">        cookies &#x3D; browser_cookie.chrome(domain_name&#x3D;&#39;.aaa.com&#39;, cookie_file&#x3D;cookiePath)</span><br><span class="line"></span><br><span class="line">	#do必填</span><br><span class="line">	while(do &#x3D;&#x3D; &quot;&quot;)</span><br><span class="line">		do &#x3D; input(&quot;請輸入系統代號(h,b):&quot;)</span><br><span class="line">		</span><br><span class="line">    cookies &#x3D; browser_cookie.chrome(domain_name&#x3D;domain(do), cookie_file&#x3D;cookiePath)</span><br><span class="line"></span><br><span class="line">	#dateInput必填</span><br><span class="line">    while(dateInput &#x3D;&#x3D; &quot;&quot;):</span><br><span class="line">        dateInput &#x3D; input(&#39;請輸入月份(yyyy-mm):&#39;)</span><br><span class="line">		</span><br><span class="line">	#預留 其實不重要</span><br><span class="line">    while (requestType &#x3D;&#x3D; &quot;&quot;):</span><br><span class="line">        requestType &#x3D; input(&#39;請求方式(Get:1, Post:2):&#39;)</span><br><span class="line"></span><br><span class="line">	#系統類型 有31個</span><br><span class="line">    print(&quot;請求類型&quot;)</span><br><span class="line">    for x in range(1, 32):</span><br><span class="line">        print(str(x) + &quot;.&quot; + case(x))</span><br><span class="line">    print(&quot;(留空Enter則全部下載)&quot;)</span><br><span class="line">    schtype &#x3D; input(&quot;:&quot;)</span><br><span class="line"></span><br><span class="line">	#拼接檔案名</span><br><span class="line">    if(schtype !&#x3D; &quot;&quot;):</span><br><span class="line">        name &#x3D; dateInput + &quot;_&quot; + do + &quot;_&quot; + case(int(schtype))</span><br><span class="line">    else:</span><br><span class="line">        name &#x3D; dateInput + &quot;_&quot; + do</span><br><span class="line"></span><br><span class="line">    dateStart &#x3D; datetime.strptime(dateInput + &quot;-01&quot;, &quot;%Y-%m-%d&quot;)</span><br><span class="line">    dateEnd &#x3D; dateStart + relativedelta(months&#x3D;1)</span><br><span class="line">    schstart &#x3D; dateStart.strftime(&quot;%Y-%m-%d&quot;)</span><br><span class="line">    schend &#x3D; dateEnd.strftime(&quot;%Y-%m-%d&quot;)</span><br><span class="line"></span><br><span class="line">    page &#x3D; 1</span><br><span class="line">    while (1&#x3D;&#x3D;1):</span><br><span class="line">		#請求url</span><br><span class="line">        nextlink &#x3D; &quot;https:&#x2F;&#x2F;&#123;domain&#125;&#x2F;admin.php&quot;</span><br><span class="line">        nextlink +&#x3D; &quot;?&quot;</span><br><span class="line">        nextlink &#x3D; nextlink.format(schtype&#x3D;schtype, schstart&#x3D;schstart, schend&#x3D;schend, page&#x3D;page, domain&#x3D;domain(do))</span><br><span class="line">        #nextlink &#x3D; &quot;http:&#x2F;&#x2F;localhost:8888&#x2F;&quot;</span><br><span class="line">		</span><br><span class="line">		#設置網絡代理</span><br><span class="line">        proxies &#x3D; &#123;&quot;http&quot;: &quot;&quot;,&quot;https&quot;: &quot;&quot;&#125;</span><br><span class="line"></span><br><span class="line">		#JarCookie 轉爲dictionary rq.utils.dict_from_cookiejar()</span><br><span class="line">        if(requestType &#x3D;&#x3D; &quot;1&quot;):</span><br><span class="line">            r &#x3D; rq.get(nextlink, cookies&#x3D;rq.utils.dict_from_cookiejar(cookies),proxies&#x3D;proxies) # 用 requests 的 get 方法把網頁抓下來</span><br><span class="line">        if (requestType &#x3D;&#x3D; &quot;2&quot;):</span><br><span class="line">            r &#x3D; rq.post(nextlink, cookies&#x3D;rq.utils.dict_from_cookiejar(cookies),proxies&#x3D;proxies)  # 用 requests 的 post 方法把網頁抓下來</span><br><span class="line">        print(nextlink)</span><br><span class="line">        print(r.status_code)</span><br><span class="line">		</span><br><span class="line">        rowsCount &#x3D; 0</span><br><span class="line">        if(r.status_code &#x3D;&#x3D; 200):</span><br><span class="line">            html &#x3D; r.content</span><br><span class="line">            nl_response&#x3D;str(html,&#39;utf-8&#39;)</span><br><span class="line">            soup &#x3D; BeautifulSoup(nl_response, &quot;html.parser&quot;) # 指定 html 作爲解析</span><br><span class="line"></span><br><span class="line">            if soup.select(&#39;table&#39;) !&#x3D; []:</span><br><span class="line">                tables &#x3D; soup.findAll(&#39;table&#39;, &#123;&#39;class&#39;:&#39;datalist fixwidth&#39;&#125;)</span><br><span class="line">				</span><br><span class="line">				#遍歷所有取得 table</span><br><span class="line">                if(len(tables) &gt;&#x3D; 1):</span><br><span class="line">                    for table in tables:</span><br><span class="line">                        tr &#x3D; table.findAll(&#39;tr&#39;)</span><br><span class="line">                        rowsCount &#x3D; len(tr)</span><br><span class="line">                        print(rowsCount)</span><br><span class="line">                        for tr in tr:</span><br><span class="line">                            td &#x3D; tr.findAll(&#39;td&#39;)</span><br><span class="line">                            if(len(td) &#x3D;&#x3D; 11):  </span><br><span class="line">                                uList.append(Info(td[1].text,td[2].text,td[3].text,td[4].text,td[5].text,td[7].text,td[8].text))</span><br><span class="line">			else:</span><br><span class="line">				print(&quot;無表格資料&quot;)</span><br><span class="line">				print(r.text)</span><br><span class="line">        else:</span><br><span class="line">            print(str(r.status_code) + r.text)</span><br><span class="line">        page &#x3D; page + 1</span><br><span class="line">        if(rowsCount&lt; 10000):</span><br><span class="line">            break</span><br><span class="line"></span><br><span class="line">    if(os.path.isfile(name + &#39;.xlsx&#39;)):</span><br><span class="line">        os.remove(name + &#39;.xlsx&#39;)</span><br><span class="line"></span><br><span class="line">    if(len(uList) &gt; 0):</span><br><span class="line">        os.path.dirname(sys.executable)</span><br><span class="line">        if (os.path.isfile(name + &#39;.xlsx&#39;)):</span><br><span class="line">            os.remove(name + &#39;.xlsx&#39;)</span><br><span class="line">        variables &#x3D; list(uList[0].__dict__.keys())</span><br><span class="line">        df &#x3D; pd.DataFrame([[getattr(i,j) for j in variables] for i in uList], columns &#x3D; variables)</span><br><span class="line">        df.rename(columns&#x3D;&#123;&quot;userName&quot;: &quot;用户名&quot;, &quot;addAmount&quot;: &quot;增减&quot;,&quot;balance&quot;: &quot;余额&quot;,&quot;type&quot;: &quot;类型&quot;,&quot;date&quot;: &quot;日期&quot;,&quot;billNo&quot;: &quot;对应订单&quot;&#125;)</span><br><span class="line">        writer &#x3D; pd.ExcelWriter(dateInput + &#39;.xlsx&#39;, engine&#x3D;&#39;xlsxwriter&#39;)</span><br><span class="line">        df.to_excel(writer, sheet_name&#x3D;&#39;Sheet1&#39;)</span><br><span class="line">        writer.save()</span><br><span class="line">    else:</span><br><span class="line">        print(&quot;無資料&quot;)</span><br><span class="line"></span><br><span class="line">    print(&quot;Finish&quot;)</span><br><span class="line">    input()</span><br><span class="line">except Exception  as e:</span><br><span class="line">    print(e)</span><br><span class="line">    input(&quot;回車結束&quot;)</span><br></pre></td></tr></table></figure>
+
+<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><ol>
+<li>PyInstaller<br> <a href="https://medium.com/pyladies-taiwan/python-%E5%B0%87python%E6%89%93%E5%8C%85%E6%88%90exe%E6%AA%94-32a4bacbe351" target="_blank" rel="noopener">https://medium.com/pyladies-taiwan/python-%E5%B0%87python%E6%89%93%E5%8C%85%E6%88%90exe%E6%AA%94-32a4bacbe351</a>   </li>
+</ol>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>Copyright： </strong>
+              Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://edwardclown.github.io/2020-05-30-%E7%AC%AC%E4%B8%80%E5%80%8B%E7%B0%A1%E5%96%AEpython%E7%88%AC%E8%9F%B2.html" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python-Learn-%E7%88%AC%E8%9F%B2/" rel="tag">-Python -Learn -爬蟲</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+    
+      <a href="/2020-04-18-Hexo-%E9%83%A8%E7%BD%B2%E7%AD%86%E8%A8%98.html" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">Hexo 部署筆記</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+
+  
+  
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.css">
+
+
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: '3a79c70cbe347b4c0a4e',
+    clientSecret: '69c732cd722b9741465557954385acab8a6e8de5',
+    repo: 'edwardclown.github.io',
+    owner: 'EdwardClown',
+    admin: ['EdwardClown'],
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: false,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2015-2020
+        Edward Yu
+      </li>
+      <li>
+        
+      </li>
+    </ul>
+    <ul class="list-inline">
+      <!-- <li>
+        
+        
+        <span>
+  <i>累計人氣:<span id="busuanzi_value_page_pv"></span></i>
+  &nbsp; | &nbsp;
+  <i>累計人次:<span id="busuanzi_value_site_uv"></span></i>
+</span>
+
+        
+      </li>
+      
+      <li> -->
+        <!-- cnzz统计 -->
+        <!-- 
+      </li> -->
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="EdwardYu&#39;s Blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主頁</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">歸檔</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分類</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">標簽</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">關于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li  class="nav-item">
+      <a class="nav-item-link"><i style="font-size:12px">總訪問量:</br><span id="busuanzi_value_site_pv"></span></i></a>
+    </li>
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['與其臨淵羡魚，不如退而結網', '若不給自己設限，則人生中就沒有限制的藩籬', '別想一下造出大海，必須先由小河川開始'],
+      startDelay: 0,
+      typeSpeed: 200,
+      loop: true,
+      backSpeed: 100,
+      showCursor: true
+    });
+  } catch (err) {
+  }
+
+</script>
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+
+
+<!-- 复制 -->
+
+  
+<link rel="stylesheet" href="/css/clipboard.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+
+    
+  </div>
+</body>
+
+</html>
